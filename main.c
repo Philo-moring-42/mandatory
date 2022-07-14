@@ -12,7 +12,7 @@ int	main(int argc, char **argv)
 {
 	t_rule	rule;
 
-	if (!ft_parsing(argc, argv, &rule))
+	if (!parsing(argc, argv, &rule))
 		return (0);
 	
 	/*             아이디어             */
