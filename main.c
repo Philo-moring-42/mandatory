@@ -6,8 +6,15 @@
 	4. include가 필요한 소스파일에만 헤더 넣기(리링크 방지, 데이터 절약)
 /*                   */
 
+#include "philo.h"
+
 int	main(int argc, char **argv)
 {
+	t_rule	rule;
+
+	if (!ft_parsing(argc, argv, &rule))
+		return (0);
+	
 	/*             아이디어             */
 	//파싱부                         
 		철학자의 수,  굶으면 죽는 시간, 먹는 시간, 자는 시간, (철학자가 최소한 밥을 먹어야 하는 수) -> 구조체 넣는다.
