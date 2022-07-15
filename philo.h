@@ -18,6 +18,7 @@ typedef struct s_rule
 }	t_rule;
 
 /* ft_atoi.c */
+int	ft_is_digit(int c);
 int	ft_atoi(const char *str);
 
 /* parsing.c */
