@@ -26,16 +26,16 @@ static void	get_must_eat(int argc, char **argv, t_rule *rule)
 	}
 }
 
-static int	check_valid_argv(int agrc, char **argv)
+static int	check_valid_argv(int argc, char **argv)
 {
 	int	i;
 	int	j;
 
 	i = 1;
-	while (i < 5)
+	while (i < argc)
 	{
 		j = 0;
-		if (argv[i][j] == '+' || argv[i][j] == '-')
+		if (argv[i][j] == '+')
 			++j;
 		while (argv[i][j])
 		{
@@ -50,8 +50,8 @@ static int	check_valid_argv(int agrc, char **argv)
 
 static int	check_valid_rule(t_rule *rule)
 {
-	if (rule->num_of_philo < 0 || rule->time_to_die < 0
-		|| rule->time_to_eat < 0 || rule->time_to_sleep < 0)
+	if (rule->num_of_philo <= 0 || rule->time_to_die <= 0
+		|| rule->time_to_eat <= 0 || rule->time_to_sleep <= 0)
 		return (FAIL);
 	if (rule->if_count_of_must_eat == TRUE && rule->count_of_must_eat < 0)
 		return (FAIL);
@@ -62,7 +62,8 @@ int	parsing(int argc, char **argv, t_rule *rule)
 {
 	if (argc != 5 && argc != 6)
 		return (FAIL);
-	check_valid_argv(argc, argv);
+	if (!check_valid_argv(argc, argv))
+		return (FAIL);
 	rule->num_of_philo = ft_atoi(argv[1]);
 	rule->time_to_die = ft_atoi(argv[2]);
 	rule->time_to_eat = ft_atoi(argv[3]);
