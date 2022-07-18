@@ -1,17 +1,5 @@
 #include "philo.h"
 
-#include <stdio.h>
-
-void	test_print(t_rule rule)
-{
-	printf("rule.num_of_philo : %d\n", rule.num_of_philo);
-	printf("rule.time_to_die : %d\n", rule.time_to_die);
-	printf("rule.time_to_eat : %d\n", rule.time_to_eat);
-	printf("rule.time_to_sleep : %d\n", rule.time_to_sleep);
-	if (rule.if_count_of_must_eat)
-		printf("rule.count_of_must_eat : %d\n", rule.count_of_must_eat);
-}
-
 static void	get_must_eat(int argc, char **argv, t_rule *rule)
 {
 	if (argc == 6)

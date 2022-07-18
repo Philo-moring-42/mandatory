@@ -13,6 +13,8 @@
 # define ALIVE		1;
 # define DEAD		0;
 
+typedef struct s_philo t_philo;
+
 typedef struct s_rule
 {
 	int	num_of_philo;
@@ -45,11 +47,20 @@ typedef struct s_philo
 int	ft_is_digit(int c);
 int	ft_atoi(const char *str);
 
+/* init_func.c */
+int	init_param(t_param *param, t_rule *rule);
+
 /* parsing.c */
 int	parsing(int argc, char **argv, t_rule *rule);
 
 /* philo_act */
 int	philo_run(t_rule *rule);
 
+
+
+
+// test
+void	test_print(t_rule rule);
+void	test_philo(t_philo philo, int i);
 
 #endif
