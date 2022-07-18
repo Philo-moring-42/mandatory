@@ -2,8 +2,10 @@
 #include <pthread.h>
 #include <stdio.h> ///+++++++++++++++++++++++++++++++++++++++
 
-void	*philo_act(){	}
-
+void	*philo_act(void *param)
+{
+	return (NULL);
+}
 
 void	philo_run(t_rule *rule)
 {
@@ -14,6 +16,7 @@ void	philo_run(t_rule *rule)
 	while (i < rule->num_of_philo)
 	{
 		pthread_create(&tids[i], NULL, philo_act, NULL);
+		pthread_join(tids[i], NULL);
+		++i;
 	}
 }
-

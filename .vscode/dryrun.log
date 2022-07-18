@@ -1,0 +1,5 @@
+make --dry-run --keep-going --print-directory
+make: Entering directory `/Users/solpang/philo'
+cc -g -pthread *.c
+make: Leaving directory `/Users/solpang/philo'
+ 

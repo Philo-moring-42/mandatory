@@ -18,6 +18,9 @@ typedef struct s_rule
 	int	if_count_of_must_eat;
 }	t_rule;
 
+typedef struct s_param
+{}	t_param;
+
 /* ft_atoi.c */
 int	ft_is_digit(int c);
 int	ft_atoi(const char *str);

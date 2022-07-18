@@ -1,2 +1,2 @@
 all :
-	cc -g *.c
+	cc -g -pthread *.c
