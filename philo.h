@@ -35,6 +35,7 @@ typedef struct s_param
 
 typedef struct s_philo
 {
+	struct s_param	*param;
 	int				tid_index;
 	int				life;
 	int				eat_count;

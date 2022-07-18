@@ -3,17 +3,19 @@
 #include <stdio.h> ///+++++++++++++++++++++++++++++++++++++++
 #include <stdlib.h>
 
-void	*philo_act(void *param)
+void	*philo_act(void *data)
 {
+	int		tid;
+	t_philo	*philo;
+
+	philo = (t_philo *)data;
+	tid = philo->tid_index;
+	if (tid % 2 == 0)
+	{
+		pthread_create
+	}
 	return (NULL);
 }
-
-// void	*philo_act(t_param *param)
-// {
-// 	t_philo	philo;
-
-// 	init_philo(&philo, *param);
-// }
 
 int	philo_run(t_rule *rule)
 {
@@ -26,7 +28,7 @@ int	philo_run(t_rule *rule)
 	while (i < rule->num_of_philo)
 	{
 		param.philo[i].tid_index = i;
-		pthread_create(&param.tids[i], NULL, philo_act, &param);
+		pthread_create(&param.tids[i], NULL, philo_act, &philo);
 		++i;
 	}
 	i = 0;

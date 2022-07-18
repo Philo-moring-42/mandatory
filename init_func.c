@@ -25,6 +25,7 @@ static int	init_philo(t_param *param)
 	i = 0;
 	while (i < param->rule->num_of_philo)
 	{
+		param->philo[i].param = param;
 		param->philo[i].life = ALIVE;
 		param->philo[i].eat_count = 0;
 		param->philo[i].starving_time = 0;
