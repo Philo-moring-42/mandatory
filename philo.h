@@ -3,6 +3,7 @@
 
 # define SUCCESS	1
 # define FAIL		0
+
 # define INFINITY	-1
 # define TRUE		1
 # define FALSE		0
@@ -23,5 +24,9 @@ int	ft_atoi(const char *str);
 
 /* parsing.c */
 int	parsing(int argc, char **argv, t_rule *rule);
+
+/* philo_act */
+void	philo_run(t_rule *rule);
+
 
 #endif

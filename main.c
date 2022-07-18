@@ -7,16 +7,21 @@
                  
 #include "philo.h"
 #include <stdio.h>
+#include <pthread.h>
 
 int	main(int argc, char **argv)
 {
 	t_rule	rule;
+	int		i;
 
 	if (!parsing(argc, argv, &rule))
 	{
 		printf("FAIL\n");
 		return (0);
 	}
+	philo_run(&rule);
+
+
 	// /*             아이디어             */
 	// //파싱부                         
 	// 	철학자의 수,  굶으면 죽는 시간, 먹는 시간, 자는 시간, (철학자가 최소한 밥을 먹어야 하는 수) -> 구조체 넣는다.
