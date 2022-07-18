@@ -22,10 +22,21 @@ typedef struct s_rule
 
 typedef struct s_param
 {
-	t_rule			*rule;
+	struct s_rule	*rule;
 	pthread_mutex_t	*forks;
 	pthread_t		*tids;
+	t_philo			*philo;
 }	t_param;
+
+typedef struct s_philo
+{
+	int				tid_index;
+	int				life;
+	int				eat_count;
+	long long		starving_time;
+	pthread_mutex_t	*left_fork;
+	pthread_mutex_t	*right_fork;
+}	t_philo;
 
 /* ft_atoi.c */
 int	ft_is_digit(int c);

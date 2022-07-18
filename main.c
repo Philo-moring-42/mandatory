@@ -12,7 +12,6 @@
 int	main(int argc, char **argv)
 {
 	t_rule	rule;
-	int		i;
 
 	if (!parsing(argc, argv, &rule))
 	{
