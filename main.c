@@ -19,8 +19,8 @@ int	main(int argc, char **argv)
 		printf("FAIL\n");
 		return (0);
 	}
-	philo_run(&rule);
-
+	if (philo_run(&rule) == FAIL)
+		return (0);
 
 	// /*             아이디어             */
 	// //파싱부                         
