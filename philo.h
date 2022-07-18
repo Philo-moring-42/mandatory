@@ -10,6 +10,9 @@
 # define TRUE		1
 # define FALSE		0
 
+# define ALIVE		1;
+# define DEAD		0;
+
 typedef struct s_rule
 {
 	int	num_of_philo;

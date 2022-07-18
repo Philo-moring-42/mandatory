@@ -15,10 +15,24 @@ void	destroys_mutexes(int i, t_param *param)
 	free(param->forks);
 }
 
-static void	init_philo(t_param *param)
+static int	init_philo(t_param *param)
 {
+	int	i;
+
 	param->philo = malloc(sizeof(t_philo) * param->rule->num_of_philo);
-	//+++++++++++++++++++++++++++++++++++++++++?
+	if (!param->philo)
+		return (FAIL);
+	i = 0;
+	while (i < param->rule->num_of_philo)
+	{
+		param->philo[i].life = ALIVE;
+		param->philo[i].eat_count = 0;
+		param->philo[i].starving_time = 0;
+		param->philo[i].left_fork = &param->forks[i];
+		param->philo[i].right_fork = &param->forks[(i + 1) % param->rule->num_of_philo];
+		++i;
+	}
+	return (SUCCESS);
 }
 
 

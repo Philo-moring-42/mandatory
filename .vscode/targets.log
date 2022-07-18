@@ -8,7 +8,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This program built for i386-apple-darwin11.3.0
  
 
-# Make data base, printed on Mon Jul 18 09:56:38 2022
+# Make data base, printed on Mon Jul 18 15:17:38 2022
 
 # Variables
 
@@ -18,7 +18,6 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 ?F = $(notdir $?)
 # environment
 VSCODE_LOG_NATIVE = false
- 
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # automatic
@@ -40,13 +39,13 @@ VSCODE_VERBOSE_LOGGING = true
 # environment
 __CFBundleIdentifier = com.microsoft.VSCode
 # environment
-INFOPATH = /opt/homebrew/share/info:
+INFOPATH = /opt/homebrew/share/info:/opt/homebrew/share/info:
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/87/t6g9lc990pxbhxmybry4mbbw0000gn/T/vscode-ipc-66790590-5cde-4a2d-b61f-41a5c78bc480.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/87/t6g9lc990pxbhxmybry4mbbw0000gn/T/vscode-ipc-fed87bc1-d41f-4e5a-8de1-2fb7742f3715.sock
 # environment
 VSCODE_CWD = /Users/solpang/philo
 # environment
-PATH = /opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/share/dotnet:~/.dotnet/tools:/Library/Apple/usr/bin:/Library/Frameworks/Mono.framework/Versions/Current/Commands
+PATH = /opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/share/dotnet:~/.dotnet/tools:/Library/Apple/usr/bin:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/opt/homebrew/bin:/opt/homebrew/sbin
 # environment
 LSCOLORS = Gxfxcxdxbxegedabagacad
 # environment
@@ -58,7 +57,7 @@ ELECTRON_RUN_AS_NODE = 1
 # default
 .FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.GI67u42CcO/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.meBCAbDBFu/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
@@ -70,7 +69,7 @@ HOMEBREW_CELLAR = /opt/homebrew/Cellar
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = undefined
 # environment
-MANPATH = /opt/homebrew/share/man::
+MANPATH = /opt/homebrew/share/man:/usr/share/man:/usr/local/share/man:/opt/homebrew/share/man:
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
@@ -108,10 +107,11 @@ USER = jkwak
 # default
 MAKECMDGOALS := all
 # environment
-TERM_SESSION_ID = w0t0p0:C41A4589-DBBE-444E-9B60-4773B04B7328
+TERM_SESSION_ID = w0t0p0:9E5C2D37-3226-49DB-8CCC-CF48BD104350
 # environment
 LESS = -R
 # automatic
+ 
 %D = $(patsubst %/,%,$(dir $%))
 # default
 MAKE_COMMAND := /Applications/Xcode.app/Contents/Developer/usr/bin/make
@@ -136,7 +136,7 @@ TERM_PROGRAM_VERSION = 3.4.15
 # environment
 MAIL = jkwak@student.42seoul.kr
 # environment
-XPC_SERVICE_NAME = application.com.microsoft.VSCode.5733010.5733017.9FBB670A-B797-4B47-B66E-FA1FD40132F4
+XPC_SERVICE_NAME = application.com.microsoft.VSCode.5733010.5733017.517C7694-99EA-42E8-90A0-94BA151136B6
 # environment
 LC_TERMINAL_VERSION = 3.4.15
 # environment
@@ -146,7 +146,7 @@ HOMEBREW_PREFIX = /opt/homebrew
 # automatic
 +F = $(notdir $+)
 # environment
-ITERM_SESSION_ID = w0t0p0:C41A4589-DBBE-444E-9B60-4773B04B7328
+ITERM_SESSION_ID = w0t0p0:9E5C2D37-3226-49DB-8CCC-CF48BD104350
 # environment
 HOMEBREW_REPOSITORY = /opt/homebrew
 # environment
@@ -178,7 +178,7 @@ LANG = C
 # environment
 TERM = xterm-256color
 # environment
-VSCODE_PID = 1732
+VSCODE_PID = 1738
 # variable set hash-table stats:
 # Load=83/1024=8%, Rehash=0, Collisions=4/108=4%
 
@@ -188,9 +188,9 @@ VSCODE_PID = 1732
 
 # Directories
 
-# . (device 16777231, inode 5874888): 12 files, no impossibilities.
+# . (device 16777230, inode 5874888): 13 files, no impossibilities.
 
-# 12 files, no impossibilities in 1 directories.
+# 13 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -247,6 +247,7 @@ Makefile:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
+ 
 
 # files hash-table stats:
 # Load=4/1024=0%, Rehash=0, Collisions=0/18=0%
@@ -261,6 +262,6 @@ Makefile:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Mon Jul 18 09:56:38 2022
+# Finished Make data base on Mon Jul 18 15:17:38 2022
 
  
