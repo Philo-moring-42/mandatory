@@ -6,7 +6,7 @@
 # define SUCCESS	1
 # define FAIL		0
 
-# define INFINITY	-1
+# define INFINITY	-999
 # define TRUE		1
 # define FALSE		0
 

@@ -38,10 +38,10 @@ static int	check_valid_argv(int argc, char **argv)
 
 static int	check_valid_rule(t_rule *rule)
 {
-	if (rule->num_of_philo <= 0 || rule->time_to_die <= 0
+	if (rule->num_of_philo <= 1 || rule->time_to_die <= 0 \
 		|| rule->time_to_eat <= 0 || rule->time_to_sleep <= 0)
 		return (FAIL);
-	if (rule->if_count_of_must_eat == TRUE && rule->count_of_must_eat < 0)
+	if (rule->if_count_of_must_eat == TRUE && rule->count_of_must_eat == 0)
 		return (FAIL);
 	return (SUCCESS);
 }
@@ -60,7 +60,6 @@ int	parsing(int argc, char **argv, t_rule *rule)
 	get_must_eat(argc, argv, rule);
 	if (!check_valid_rule(rule))
 		return (FAIL);
-	// test_print(*rule);
 	return (SUCCESS);
 }
 

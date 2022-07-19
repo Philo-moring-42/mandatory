@@ -54,7 +54,8 @@ int	monitoring_philos(t_param param)
 	{
 		if (check_death_of_philo(param) == KILL_PROCESS)
 			break;
-		if (check_eat_count(param) == KILL_PROCESS)
+		if (param.rule->if_count_of_must_eat == TRUE && \
+			check_eat_count(param) == KILL_PROCESS)
 			break;
 	}
 	return (KILL_PROCESS);

@@ -2,7 +2,7 @@
 #include <pthread.h>
 #include <stdlib.h>
 
-void	destroys_mutexes(int i, t_param *param)
+static void	destroy_mutex(int i, t_param *param)
 {
 	int	start;
 
@@ -27,7 +27,7 @@ static int	init_philo(t_param *param)
 	{
 		param->philo[i].param = param;
 		param->philo[i].life = ALIVE;
-		param->philo[i].eat_count = -1;
+		param->philo[i].eat_count = 0;
 		param->philo[i].starving_time = 0;
 		param->philo[i].left_fork = &param->forks[i];
 		param->philo[i].right_fork = &param->forks[(i + 1) % param->rule->num_of_philo];
@@ -48,9 +48,9 @@ int	init_param(t_param *param, t_rule *rule)
 	i = 0;
 	while (i < rule->num_of_philo)
 	{
-		if(pthread_mutex_init(&param->forks[i], NULL))
+		if (pthread_mutex_init(&param->forks[i], NULL))
 		{
-			destroys_mutexes(i, param);
+			destroy_mutex(i, param);
 			return (FAIL);
 		}
 		++i;

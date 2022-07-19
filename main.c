@@ -20,7 +20,7 @@ int	main(int argc, char **argv)
 	}
 	if (philo_run(&rule) == FAIL)
 		return (0);
-
+		
 	// /*             아이디어             */
 	// //파싱부                         
 	// 	철학자의 수,  굶으면 죽는 시간, 먹는 시간, 자는 시간, (철학자가 최소한 밥을 먹어야 하는 수) -> 구조체 넣는다.

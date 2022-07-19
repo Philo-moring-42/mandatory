@@ -11,12 +11,17 @@ void	busy_waiting(long long time_to_spend)
 
 	start_time = get_time();
 	target_time = start_time + time_to_spend; 
+	//먹는 동안 죽는지 안죽는지 확인 해야 할까?
+	// if (get_time > start_time + time_to_die -->is dinig == false)
+	// 	return ;
 	while (get_time() < target_time)
 		usleep(100);
 }
 
 void	philo_eat(t_rule rule, t_philo *philo, int tid)
 {
+	// if (rule.is_dining == FALSE)
+	// 	return
 	printf("%d is eating now\n", tid + 1);
 	busy_waiting(rule.time_to_eat);
 	++(philo->eat_count);
@@ -24,6 +29,8 @@ void	philo_eat(t_rule rule, t_philo *philo, int tid)
 
 void	philo_sleep(t_rule rule, int tid)
 {
+	// if (rule.is_dining == FALSE)
+	// 	return
 	printf("%d is sleeping now\n", tid + 1);
 	busy_waiting(rule.time_to_sleep);
 	usleep(rule.time_to_sleep);
@@ -31,6 +38,8 @@ void	philo_sleep(t_rule rule, int tid)
 
 void	philo_think(int tid)
 {
+	// if (rule.is_dining == FALSE)
+	// 	return
 	printf("%d is thinking now\n", tid + 1);
 	usleep(200);
 }
@@ -89,9 +98,9 @@ int	philo_run(t_rule *rule)
 		i = 0;
 		while (i < rule->num_of_philo)
 		{
-			pthread_detach(param.tids[i]);
+			pthread_join(param.tids[i], NULL);
 			++i;
 		}
 	}
-	return (SUCCESS);
+	return (SUCCESS); //반환할 일이 없음.
 }
