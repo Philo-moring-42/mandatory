@@ -56,6 +56,7 @@ int	parsing(int argc, char **argv, t_rule *rule)
 	rule->time_to_die = ft_atoi(argv[2]);
 	rule->time_to_eat = ft_atoi(argv[3]);
 	rule->time_to_sleep = ft_atoi(argv[4]);
+	rule->is_dining = TRUE;
 	get_must_eat(argc, argv, rule);
 	if (!check_valid_rule(rule))
 		return (FAIL);

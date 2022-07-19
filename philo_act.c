@@ -73,17 +73,14 @@ int	philo_run(t_rule *rule)
 	//	pthread_join(param.tids[i], NULL);
 		++i;
 	}
-	/* i = 0;
-	while (i < rule->num_of_philo)
+	if (monitoring_philos(param) == SUCCESS)
 	{
-		test_philo(param.philo[i], i);
-		++i;
-	} */
-	i = 0;
-	while (i < rule->num_of_philo)
-	{
-		pthread_join(param.tids[i], NULL);
-		++i;
+		i = 0;
+		while (i < rule->num_of_philo)
+		{
+			pthread_detach(param.tids[i]);
+			++i;
+		}
 	}
 	return (SUCCESS);
 }
