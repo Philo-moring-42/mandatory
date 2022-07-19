@@ -59,7 +59,7 @@ int	parsing(int argc, char **argv, t_rule *rule)
 	get_must_eat(argc, argv, rule);
 	if (!check_valid_rule(rule))
 		return (FAIL);
-	test_print(*rule);
+	// test_print(*rule);
 	return (SUCCESS);
 }
 
