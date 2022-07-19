@@ -20,7 +20,6 @@ int	main(int argc, char **argv)
 	}
 	if (philo_run(&rule) == FAIL)
 		return (0);
-	
 
 	// /*             아이디어             */
 	// //파싱부                         

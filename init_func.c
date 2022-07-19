@@ -27,7 +27,7 @@ static int	init_philo(t_param *param)
 	{
 		param->philo[i].param = param;
 		param->philo[i].life = ALIVE;
-		param->philo[i].eat_count = 0;
+		param->philo[i].eat_count = -1;
 		param->philo[i].starving_time = 0;
 		param->philo[i].left_fork = &param->forks[i];
 		param->philo[i].right_fork = &param->forks[(i + 1) % param->rule->num_of_philo];

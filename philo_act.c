@@ -4,15 +4,31 @@
 #include <stdio.h> ///+++++++++++++++++++++++++++++++++++++++
 #include <stdlib.h>
 
-void	philo_eat(t_rule rule, t_philo *philo, int tid)
+void	busy_waiting(int time_to_spend)
 {
 	long long	start_time;
+	long long	target_time;
 
 	start_time = get_time();
+	target_time = start_time + (long long)time_to_spend * 1000; 
+
+	int	i = 0;
+	printf("start : %lld, target : %lld\n", start_time, target_time);
+	while (get_time() < target_time)
+	{
+		usleep(100);
+		printf("busy_wating_%d\n", i);
+		i++;
+	}
+}
+
+void	philo_eat(t_rule rule, t_philo *philo, int tid)
+{
 	printf("%d is eating now\n", tid + 1);
-	usleep(rule.time_to_eat * 1000);
+	long long	start_time = get_time();
+	busy_waiting(rule.time_to_eat);
+	printf("busy_waiting[%d] : %lld\n", tid, start_time - get_time());
 	++(philo->eat_count);
-	printf("tid[%d] end : %lld\n", tid + 1, get_time() - start_time);
 }
 
 void	philo_sleep(t_rule rule, int tid)
@@ -76,7 +92,7 @@ int	philo_run(t_rule *rule)
 	//	pthread_join(param.tids[i], NULL);
 		++i;
 	}
-	if (monitoring_philos(param) == SUCCESS)
+	if (monitoring_philos(param) == KILL_PROCESS)
 	{
 		i = 0;
 		while (i < rule->num_of_philo)
