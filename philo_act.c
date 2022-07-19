@@ -4,10 +4,11 @@
 #include <stdio.h> ///+++++++++++++++++++++++++++++++++++++++
 #include <stdlib.h>
 
-void	philo_eat(t_rule rule, int tid)
+void	philo_eat(t_rule rule, t_philo *philo, int tid)
 {
 	printf("%d is eating now\n", tid + 1);
 	usleep(rule.time_to_eat);
+	++(philo->eat_count);
 }
 
 void	philo_sleep(t_rule rule, int tid)
@@ -26,12 +27,10 @@ void	*philo_act(void *data)
 {
 	int		tid;
 	t_philo	*philo;
-	int		i;
 
 	philo = (t_philo *)data;
 	tid = philo->tid_index;
-	i = 0;
-	while (i++ < 5)
+	while (philo->param->rule->is_dining == TRUE)
 	{
 		if (tid % 2 == 0)
 		{
@@ -42,13 +41,13 @@ void	*philo_act(void *data)
 		}
 		else
 		{
-			usleep(2000);
+			usleep(200);
 			pthread_mutex_lock(philo->right_fork);
 			printf("%d get right fork\n" , tid + 1);
 			pthread_mutex_lock(philo->left_fork);
 			printf("%d get left fork\n" , tid + 1);
 		}
-		philo_eat(*(philo->param->rule), philo->tid_index);
+		philo_eat(*(philo->param->rule), philo, philo->tid_index);
 		pthread_mutex_unlock(philo->left_fork);
 		pthread_mutex_unlock(philo->right_fork);
 		philo_sleep(*(philo->param->rule), philo->tid_index);

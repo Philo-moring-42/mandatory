@@ -52,6 +52,9 @@ typedef struct s_philo
 int	ft_is_digit(int c);
 int	ft_atoi(const char *str);
 
+/* get_time.c */
+long long	get_time(void);
+
 /* init_func.c */
 int	init_param(t_param *param, t_rule *rule);
 
