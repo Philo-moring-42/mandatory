@@ -4,36 +4,28 @@
 #include <stdio.h> ///+++++++++++++++++++++++++++++++++++++++
 #include <stdlib.h>
 
-void	busy_waiting(int time_to_spend)
+void	busy_waiting(long long time_to_spend)
 {
 	long long	start_time;
 	long long	target_time;
 
 	start_time = get_time();
-	target_time = start_time + (long long)time_to_spend * 1000; 
-
-	int	i = 0;
-	printf("start : %lld, target : %lld\n", start_time, target_time);
+	target_time = start_time + time_to_spend; 
 	while (get_time() < target_time)
-	{
 		usleep(100);
-		printf("busy_wating_%d\n", i);
-		i++;
-	}
 }
 
 void	philo_eat(t_rule rule, t_philo *philo, int tid)
 {
 	printf("%d is eating now\n", tid + 1);
-	long long	start_time = get_time();
 	busy_waiting(rule.time_to_eat);
-	printf("busy_waiting[%d] : %lld\n", tid, start_time - get_time());
 	++(philo->eat_count);
 }
 
 void	philo_sleep(t_rule rule, int tid)
 {
 	printf("%d is sleeping now\n", tid + 1);
+	busy_waiting(rule.time_to_sleep);
 	usleep(rule.time_to_sleep);
 }
 
