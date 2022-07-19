@@ -1,4 +1,6 @@
 #include "philo.h"
+#include <unistd.h>
+#include <stdio.h>
 
 int	check_eat_count(t_param param)
 {
@@ -28,13 +30,20 @@ int	check_death_of_philo(t_param param)
 	i = 0;
 	while (i < param.rule->num_of_philo)
 	{
-		if (param.philo[i].starving_time > param.rule->time_to_die)
+		/* if (param.philo[i].starving_time > param.rule->time_to_die)
+		{
+			param.rule->is_dining = FALSE;
+			printf("philo %d is dead\n", i + 1);
+			return (KILL_PROCESS);
+		} */
+		if (param.philo[i].life == DEAD)
 		{
 			param.rule->is_dining = FALSE;
 			printf("philo %d is dead\n", i + 1);
 			return (KILL_PROCESS);
 		}
 		++i;
+		usleep(100);
 	}
 	return (KEEP_PROCESS);
 }

@@ -6,9 +6,13 @@
 
 void	philo_eat(t_rule rule, t_philo *philo, int tid)
 {
+	long long	start_time;
+
+	start_time = get_time();
 	printf("%d is eating now\n", tid + 1);
-	usleep(rule.time_to_eat);
+	usleep(rule.time_to_eat * 1000);
 	++(philo->eat_count);
+	printf("tid[%d] end : %lld\n", tid + 1, get_time() - start_time);
 }
 
 void	philo_sleep(t_rule rule, int tid)
