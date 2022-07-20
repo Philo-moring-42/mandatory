@@ -11,10 +11,11 @@ int	check_eat_count(t_param param)
 	i = 0;
 	while (i < param.rule->num_of_philo)
 	{
-		if (param.philo[i].eat_count == param.rule->if_count_of_must_eat)
+		if (param.philo[i].eat_count >= param.rule->count_of_must_eat)
 			++num_of_hogs;
 		++i;
 	}
+	// printf("num_of_hogs : %d\n", num_of_hogs);
 	if (num_of_hogs == param.rule->num_of_philo)
 	{
 		param.rule->is_dining = FALSE;

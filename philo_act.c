@@ -4,7 +4,7 @@
 #include <stdio.h> ///+++++++++++++++++++++++++++++++++++++++
 #include <stdlib.h>
 
-void	busy_waiting(long long time_to_spend)
+static void	busy_waiting(long long time_to_spend)
 {
 	long long	start_time;
 	long long	target_time;
@@ -18,30 +18,53 @@ void	busy_waiting(long long time_to_spend)
 		usleep(100);
 }
 
-void	philo_eat(t_rule rule, t_philo *philo, int tid)
+static void	philo_eat(t_rule rule, t_philo *philo, int tid)
 {
-	// if (rule.is_dining == FALSE)
-	// 	return
+	if (rule.is_dining == FALSE)
+		return ;
 	printf("%d is eating now\n", tid + 1);
 	busy_waiting(rule.time_to_eat);
 	++(philo->eat_count);
 }
 
-void	philo_sleep(t_rule rule, int tid)
+static void	philo_sleep(t_rule rule, int tid)
 {
-	// if (rule.is_dining == FALSE)
-	// 	return
+	if (rule.is_dining == FALSE)
+		return ;
 	printf("%d is sleeping now\n", tid + 1);
 	busy_waiting(rule.time_to_sleep);
 	usleep(rule.time_to_sleep);
 }
 
-void	philo_think(int tid)
+static void	philo_think(t_rule rule, int tid)
 {
-	// if (rule.is_dining == FALSE)
-	// 	return
+	if (rule.is_dining == FALSE)
+		return ;
 	printf("%d is thinking now\n", tid + 1);
 	usleep(200);
+}
+
+static void	odd_philo_eat(t_philo *philo, int tid)
+{
+	pthread_mutex_lock(philo->left_fork);
+	printf("%d get left fork\n" , tid + 1);
+	pthread_mutex_lock(philo->right_fork);
+	printf("%d get right fork\n" , tid + 1);
+	philo_eat(*(philo->param->rule), philo, philo->tid_index);
+	pthread_mutex_unlock(philo->left_fork);
+	pthread_mutex_unlock(philo->right_fork);
+}
+
+static void	even_philo_eat(t_philo *philo, int tid)
+{
+	usleep(200);
+	pthread_mutex_lock(philo->right_fork);
+	printf("%d get right fork\n" , tid + 1);
+	pthread_mutex_lock(philo->left_fork);
+	printf("%d get left fork\n" , tid + 1);
+	philo_eat(*(philo->param->rule), philo, philo->tid_index);
+	pthread_mutex_unlock(philo->left_fork);
+	pthread_mutex_unlock(philo->right_fork);
 }
 
 void	*philo_act(void *data)
@@ -54,26 +77,11 @@ void	*philo_act(void *data)
 	while (philo->param->rule->is_dining == TRUE)
 	{
 		if (tid % 2 == 0)
-		{
-			pthread_mutex_lock(philo->left_fork);
-			printf("%d get left fork\n" , tid + 1);
-			pthread_mutex_lock(philo->right_fork);
-			printf("%d get right fork\n" , tid + 1);
-		}
+			odd_philo_eat(philo, tid);
 		else
-		{
-			usleep(200);
-			pthread_mutex_lock(philo->right_fork);
-			printf("%d get right fork\n" , tid + 1);
-			pthread_mutex_lock(philo->left_fork);
-			printf("%d get left fork\n" , tid + 1);
-		}
-		philo_eat(*(philo->param->rule), philo, philo->tid_index);
-		pthread_mutex_unlock(philo->left_fork);
-		pthread_mutex_unlock(philo->right_fork);
+			even_philo_eat(philo, tid);
 		philo_sleep(*(philo->param->rule), philo->tid_index);
-		philo_think(philo->tid_index);
-			//pthread_create
+		philo_think(*(philo->param->rule), philo->tid_index);
 	}
 	return (NULL);
 }
