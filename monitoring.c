@@ -18,7 +18,9 @@ int	check_eat_count(t_param param)
 	// printf("num_of_hogs : %d\n", num_of_hogs);
 	if (num_of_hogs == param.rule->num_of_philo)
 	{
+		// pthread_mutex_lock(param.dining_or_not);
 		param.rule->is_dining = FALSE;
+		// pthread_mutex_unlock(param.dining_or_not);
 		printf("all philosophers have became hogs\n");
 		return (KILL_PROCESS);
 	}
@@ -40,8 +42,9 @@ int	check_death_of_philo(t_param param)
 		} */
 		if (param.philo[i].life == DEAD)
 		{
+			// pthread_mutex_lock(param.dining_or_not);
 			param.rule->is_dining = FALSE;
-			printf("philo %d is dead\n", i + 1);
+			// pthread_mutex_unlock(param.dining_or_not);
 			return (KILL_PROCESS);
 		}
 		++i;

@@ -2,6 +2,7 @@
 	"makefile.extensionOutputFolder": "./.vscode",
 	"C_Cpp.errorSquiggles": "Enabled",
 	"files.associations": {
-		"stdio.h": "c"
+		"stdio.h": "c",
+		"philo.h": "c"
 	}
 }

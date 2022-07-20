@@ -14,13 +14,14 @@ static void	busy_waiting(long long time_to_spend, t_philo *philo, int tid)
 	//먹는 동안 죽는지 안죽는지 확인 해야 할까?
 	while (get_time() < target_time)
 	{
-		printf("%lld / %lld / %d\n", get_time(), start_time, philo->param->rule->time_to_die);
+		// printf("%lld / %lld / %d\n", get_time(), start_time, philo->param->rule->time_to_die);
 		if (get_time() > start_time + philo->param->rule->time_to_die)
 		{
+			pthread_mutex_lock(philo->param->dining_or_not);
 			philo->param->rule->is_dining = FALSE;
 			philo->life = DEAD;
 			printf("%d died\n", tid + 1);
-			exit(0);
+			pthread_mutex_unlock(philo->param->dining_or_not);
 			return ;
 		}
 		usleep(1000);
@@ -29,8 +30,13 @@ static void	busy_waiting(long long time_to_spend, t_philo *philo, int tid)
 
 static void	philo_eat(t_rule rule, t_philo *philo, int tid)
 {
+	// pthread_mutex_lock(philo->param->dining_or_not);
 	if (rule.is_dining == FALSE)
+	{
+		// pthread_mutex_unlock(philo->param->dining_or_not);
 		return ;
+	}
+		// pthread_mutex_unlock(philo->param->dining_or_not);
 	printf("%d is eating now\n", tid + 1);
 	busy_waiting(rule.time_to_eat, philo, tid);
 	++(philo->eat_count);
@@ -38,22 +44,38 @@ static void	philo_eat(t_rule rule, t_philo *philo, int tid)
 
 static void	philo_sleep(t_rule rule, t_philo *philo, int tid)
 {
+	// pthread_mutex_lock(philo->param->dining_or_not);
 	if (rule.is_dining == FALSE)
+	{
+		// pthread_mutex_unlock(philo->param->dining_or_not);
 		return ;
+	}
+		// pthread_mutex_unlock(philo->param->dining_or_not);
 	printf("%d is sleeping now\n", tid + 1);
 	busy_waiting(rule.time_to_sleep, philo, tid);
 }
 
 static void	philo_think(t_rule rule, t_philo *philo, int tid)
 {
+	// pthread_mutex_lock(philo->param->dining_or_not);
 	if (rule.is_dining == FALSE)
+	{
 		return ;
+	}
+		// pthread_mutex_unlock(philo->param->dining_or_not);
 	printf("%d is thinking now\n", tid + 1);
 	busy_waiting(200, philo, tid);
 }
 
 static void	odd_philo_eat(t_philo *philo, int tid)
 {
+	pthread_mutex_lock(philo->param->dining_or_not);
+	if (philo->param->rule->is_dining == FALSE)
+	{
+	pthread_mutex_unlock(philo->param->dining_or_not);
+		return ;
+	}
+	pthread_mutex_unlock(philo->param->dining_or_not);
 	pthread_mutex_lock(philo->left_fork);
 	printf("%d get left fork\n" , tid + 1);
 	pthread_mutex_lock(philo->right_fork);
@@ -66,6 +88,13 @@ static void	odd_philo_eat(t_philo *philo, int tid)
 static void	even_philo_eat(t_philo *philo, int tid)
 {
 	usleep(200);
+	pthread_mutex_lock(philo->param->dining_or_not);
+	if (philo->param->rule->is_dining == FALSE)
+	{
+	pthread_mutex_unlock(philo->param->dining_or_not);
+		return ;
+	}
+	pthread_mutex_unlock(philo->param->dining_or_not);
 	pthread_mutex_lock(philo->right_fork);
 	printf("%d get right fork\n" , tid + 1);
 	pthread_mutex_lock(philo->left_fork);
@@ -82,15 +111,19 @@ void	*philo_act(void *data)
 
 	philo = (t_philo *)data;
 	tid = philo->tid_index;
+	// pthread_mutex_lock(philo->param->dining_or_not);
 	while (philo->param->rule->is_dining == TRUE)
 	{
+		// pthread_mutex_unlock(philo->param->dining_or_not);
 		if (tid % 2 == 0)
 			odd_philo_eat(philo, tid);
 		else
 			even_philo_eat(philo, tid);
 		philo_sleep(*(philo->param->rule), philo, philo->tid_index);
 		philo_think(*(philo->param->rule), philo, philo->tid_index);
+		// pthread_mutex_lock(philo->param->dining_or_not);
 	}
+	// pthread_mutex_unlock(philo->param->dining_or_not);
 	return (NULL);
 }
 

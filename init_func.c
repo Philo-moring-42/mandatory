@@ -59,5 +59,7 @@ int	init_param(t_param *param, t_rule *rule)
 	if (!param->tids)
 		return (FAIL);
 	init_philo(param);
+	param->dining_or_not = malloc(sizeof(pthread_mutex_t));
+	pthread_mutex_init(param->dining_or_not, NULL);
 	return (SUCCESS);
 }

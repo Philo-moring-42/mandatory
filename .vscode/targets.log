@@ -6,11 +6,13 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # PARTICULAR PURPOSE.
 
 # This program built for i386-apple-darwin11.3.0
+ 
 
-# Make data base, printed on Tue Jul 19 14:14:34 2022
+# Make data base, printed on Wed Jul 20 10:12:11 2022
 
 # Variables
 
+ 
 # automatic
 <D = $(patsubst %/,%,$(dir $<))
 # automatic
@@ -38,13 +40,13 @@ VSCODE_VERBOSE_LOGGING = true
 # environment
 __CFBundleIdentifier = com.microsoft.VSCode
 # environment
-INFOPATH = /opt/homebrew/share/info:
+INFOPATH = /opt/homebrew/share/info:/opt/homebrew/share/info:
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/87/t6g9lc990pxbhxmybry4mbbw0000gn/T/vscode-ipc-15851669-d64b-49ee-806a-05418507ec04.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/87/t6g9lc990pxbhxmybry4mbbw0000gn/T/vscode-ipc-89bc3632-4130-404f-a2a4-ff40d906ed83.sock
 # environment
 VSCODE_CWD = /Users/solpang/philo
 # environment
-PATH = /opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/share/dotnet:~/.dotnet/tools:/Library/Apple/usr/bin:/Library/Frameworks/Mono.framework/Versions/Current/Commands
+PATH = /opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/share/dotnet:~/.dotnet/tools:/Library/Apple/usr/bin:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/opt/homebrew/bin:/opt/homebrew/sbin
 # environment
 LSCOLORS = Gxfxcxdxbxegedabagacad
 # environment
@@ -56,7 +58,7 @@ ELECTRON_RUN_AS_NODE = 1
 # default
 .FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.0sHnjxgVXb/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.JlJ85qz9TU/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
@@ -68,7 +70,7 @@ HOMEBREW_CELLAR = /opt/homebrew/Cellar
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = undefined
 # environment
-MANPATH = /opt/homebrew/share/man::
+MANPATH = /opt/homebrew/share/man:/usr/share/man:/usr/local/share/man:/opt/homebrew/share/man:
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
@@ -92,6 +94,7 @@ XPC_FLAGS = 0x0
 # environment
 COLORTERM = truecolor
 # default
+ 
 MAKE = $(MAKE_COMMAND)
 # environment
 LC_TERMINAL = iTerm2
@@ -106,7 +109,7 @@ USER = jkwak
 # default
 MAKECMDGOALS := all
 # environment
-TERM_SESSION_ID = w0t0p0:AFBEFCD8-DEFB-4BAA-9A78-2604079D9BEB
+TERM_SESSION_ID = w0t0p0:899326D1-975B-464F-99DF-3BE511D5C712
 # environment
 LESS = -R
 # automatic
@@ -134,7 +137,7 @@ TERM_PROGRAM_VERSION = 3.4.15
 # environment
 MAIL = jkwak@student.42seoul.kr
 # environment
-XPC_SERVICE_NAME = application.com.microsoft.VSCode.5733010.5733017.350170E2-A19C-4E3E-8291-E6D92739E31F
+XPC_SERVICE_NAME = application.com.microsoft.VSCode.5733010.5733017.CA2492D2-9E83-46EA-95D2-C237FC069465
 # environment
 LC_TERMINAL_VERSION = 3.4.15
 # environment
@@ -144,7 +147,7 @@ HOMEBREW_PREFIX = /opt/homebrew
 # automatic
 +F = $(notdir $+)
 # environment
-ITERM_SESSION_ID = w0t0p0:AFBEFCD8-DEFB-4BAA-9A78-2604079D9BEB
+ITERM_SESSION_ID = w0t0p0:899326D1-975B-464F-99DF-3BE511D5C712
 # environment
 HOMEBREW_REPOSITORY = /opt/homebrew
 # environment
@@ -176,7 +179,7 @@ LANG = C
 # environment
 TERM = xterm-256color
 # environment
-VSCODE_PID = 2021
+VSCODE_PID = 1984
 # variable set hash-table stats:
 # Load=83/1024=8%, Rehash=0, Collisions=4/108=4%
 
@@ -186,9 +189,9 @@ VSCODE_PID = 2021
 
 # Directories
 
-# . (device 16777232, inode 5874888): 14 files, no impossibilities.
+# . (device 16777233, inode 5874888): 16 files, no impossibilities.
 
-# 14 files, no impossibilities in 1 directories.
+# 16 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -259,6 +262,6 @@ Makefile:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Tue Jul 19 14:14:34 2022
+# Finished Make data base on Wed Jul 20 10:12:11 2022
 
  

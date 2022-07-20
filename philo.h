@@ -33,6 +33,7 @@ typedef struct s_param
 {
 	struct s_rule	*rule;
 	pthread_mutex_t	*forks;
+	pthread_mutex_t	*dining_or_not;
 	pthread_t		*tids;
 	t_philo			*philo;
 }	t_param;
