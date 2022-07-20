@@ -4,7 +4,7 @@
 #include <stdio.h> ///+++++++++++++++++++++++++++++++++++++++
 #include <stdlib.h>
 
-static void	busy_waiting(long long time_to_spend)
+static void	busy_waiting(long long time_to_spend, t_philo *philo, int tid)
 {
 	long long	start_time;
 	long long	target_time;
@@ -12,10 +12,19 @@ static void	busy_waiting(long long time_to_spend)
 	start_time = get_time();
 	target_time = start_time + time_to_spend; 
 	//먹는 동안 죽는지 안죽는지 확인 해야 할까?
-	// if (get_time > start_time + time_to_die -->is dinig == false)
-	// 	return ;
 	while (get_time() < target_time)
-		usleep(100);
+	{
+		printf("%lld / %lld / %d\n", get_time(), start_time, philo->param->rule->time_to_die);
+		if (get_time() > start_time + philo->param->rule->time_to_die)
+		{
+			philo->param->rule->is_dining = FALSE;
+			philo->life = DEAD;
+			printf("%d died\n", tid + 1);
+			exit(0);
+			return ;
+		}
+		usleep(1000);
+	}
 }
 
 static void	philo_eat(t_rule rule, t_philo *philo, int tid)
@@ -23,25 +32,24 @@ static void	philo_eat(t_rule rule, t_philo *philo, int tid)
 	if (rule.is_dining == FALSE)
 		return ;
 	printf("%d is eating now\n", tid + 1);
-	busy_waiting(rule.time_to_eat);
+	busy_waiting(rule.time_to_eat, philo, tid);
 	++(philo->eat_count);
 }
 
-static void	philo_sleep(t_rule rule, int tid)
+static void	philo_sleep(t_rule rule, t_philo *philo, int tid)
 {
 	if (rule.is_dining == FALSE)
 		return ;
 	printf("%d is sleeping now\n", tid + 1);
-	busy_waiting(rule.time_to_sleep);
-	usleep(rule.time_to_sleep);
+	busy_waiting(rule.time_to_sleep, philo, tid);
 }
 
-static void	philo_think(t_rule rule, int tid)
+static void	philo_think(t_rule rule, t_philo *philo, int tid)
 {
 	if (rule.is_dining == FALSE)
 		return ;
 	printf("%d is thinking now\n", tid + 1);
-	usleep(200);
+	busy_waiting(200, philo, tid);
 }
 
 static void	odd_philo_eat(t_philo *philo, int tid)
@@ -80,8 +88,8 @@ void	*philo_act(void *data)
 			odd_philo_eat(philo, tid);
 		else
 			even_philo_eat(philo, tid);
-		philo_sleep(*(philo->param->rule), philo->tid_index);
-		philo_think(*(philo->param->rule), philo->tid_index);
+		philo_sleep(*(philo->param->rule), philo, philo->tid_index);
+		philo_think(*(philo->param->rule), philo, philo->tid_index);
 	}
 	return (NULL);
 }

@@ -19,6 +19,7 @@ int	check_eat_count(t_param param)
 	if (num_of_hogs == param.rule->num_of_philo)
 	{
 		param.rule->is_dining = FALSE;
+		printf("all philosophers have became hogs\n");
 		return (KILL_PROCESS);
 	}
 	return (KEEP_PROCESS);
