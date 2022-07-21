@@ -31,7 +31,7 @@ int	check_death_of_philo(t_param param)
 	i = 0;
 	while (i < param.rule->num_of_philo)
 	{
-		if (param.philo[i].life == DEAD)
+		if (param.philo[i].life == DEAD || (param.philo[i].starving_time / 10 >= param.rule->time_to_die))
 		{
 			param.rule->is_dining = FALSE;
 			return (KILL_PROCESS);
