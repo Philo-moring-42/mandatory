@@ -6,24 +6,21 @@
 
 static void	busy_waiting(long long time_to_spend, t_philo *philo, int tid)
 {
-	long long	start_time;
 	long long	target_time;
 
-	start_time = get_time();
-	target_time = start_time + time_to_spend; 
-	//먹는 동안 죽는지 안죽는지 확인 해야 할까?
+	target_time = get_time() + time_to_spend; 
 	while (get_time() < target_time)
 	{
-		printf("%lld / %lld / %d\n", get_time(), start_time, philo->param->rule->time_to_die);
-		if (get_time() > start_time + philo->param->rule->time_to_die)
+		//if (get_time() > start_time + philo->param->rule->time_to_die)
+		if (philo->starving_time >= philo->param->rule->time_to_die)
 		{
 			philo->param->rule->is_dining = FALSE;
 			philo->life = DEAD;
 			printf("%d died\n", tid + 1);
-			exit(0);
 			return ;
 		}
-		usleep(1000);
+		usleep(100);
+		philo->starving_time += 0.1;
 	}
 }
 
@@ -34,6 +31,7 @@ static void	philo_eat(t_rule rule, t_philo *philo, int tid)
 	printf("%d is eating now\n", tid + 1);
 	busy_waiting(rule.time_to_eat, philo, tid);
 	++(philo->eat_count);
+	philo->starving_time = 0;
 }
 
 static void	philo_sleep(t_rule rule, t_philo *philo, int tid)
@@ -49,12 +47,24 @@ static void	philo_think(t_rule rule, t_philo *philo, int tid)
 	if (rule.is_dining == FALSE)
 		return ;
 	printf("%d is thinking now\n", tid + 1);
-	busy_waiting(200, philo, tid);
+	//busy_waiting(200, philo, tid);
 }
 
 static void	odd_philo_eat(t_philo *philo, int tid)
 {
+	long long	start_time;
+
+	start_time = get_time();
 	pthread_mutex_lock(philo->left_fork);
+	philo->starving_time += get_time() - start_time; 
+	if (philo->starving_time >= philo->param->rule->time_to_die)
+	{
+		philo->param->rule->is_dining = FALSE;
+		philo->life = DEAD;
+		printf("%d died\n", tid + 1);
+		pthread_mutex_unlock(philo->left_fork);
+		return ;
+	}
 	printf("%d get left fork\n" , tid + 1);
 	pthread_mutex_lock(philo->right_fork);
 	printf("%d get right fork\n" , tid + 1);
@@ -65,8 +75,21 @@ static void	odd_philo_eat(t_philo *philo, int tid)
 
 static void	even_philo_eat(t_philo *philo, int tid)
 {
-	usleep(200);
+	long long	start_time;
+
+	// usleep(200);
+	// philo->starving_time += 0.2;
+	start_time = get_time();
 	pthread_mutex_lock(philo->right_fork);
+	philo->starving_time += get_time() - start_time; 
+	if (philo->starving_time >= philo->param->rule->time_to_die)
+	{
+		philo->param->rule->is_dining = FALSE;
+		philo->life = DEAD;
+		printf("%d died\n", tid + 1);
+		pthread_mutex_unlock(philo->right_fork);
+		return ;
+	}
 	printf("%d get right fork\n" , tid + 1);
 	pthread_mutex_lock(philo->left_fork);
 	printf("%d get left fork\n" , tid + 1);
@@ -106,7 +129,7 @@ int	philo_run(t_rule *rule)
 	{
 		param.philo[i].tid_index = i;
 		pthread_create(&param.tids[i], NULL, philo_act, &param.philo[i]);
-	//	pthread_join(param.tids[i], NULL);
+		usleep(100);
 		++i;
 	}
 	if (monitoring_philos(param) == KILL_PROCESS)

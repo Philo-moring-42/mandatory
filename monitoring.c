@@ -41,7 +41,6 @@ int	check_death_of_philo(t_param param)
 		if (param.philo[i].life == DEAD)
 		{
 			param.rule->is_dining = FALSE;
-			printf("philo %d is dead\n", i + 1);
 			return (KILL_PROCESS);
 		}
 		++i;
