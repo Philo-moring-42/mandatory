@@ -15,14 +15,14 @@ static void	busy_waiting(long long time_to_spend, t_philo *philo, int tid)
 	{
 		// if (get_time() > start_time + philo->param->rule->time_to_die)
 			// printf("%d : starving : %lld\n", tid, philo->starving_time);
-		if (philo->starving_time / 10 >= philo->param->rule->time_to_die)
-		{
-			philo->param->rule->is_dining = FALSE;
-			philo->life = DEAD;
-			// printf("%d : starving : %lld\n", tid, philo->starving_time);
-			printf("[%lld] %d died\n", get_time() - philo->param->start_time, tid + 1);
-			return ;
-		}
+		// if (philo->starving_time / 10 >= philo->param->rule->time_to_die)
+		// {
+		// 	philo->param->rule->is_dining = FALSE;
+		// 	philo->life = DEAD;
+		// 	// printf("%d : starving : %lld\n", tid, philo->starving_time);
+			// printf("[%lld] %d died\n", get_time() - philo->param->start_time, tid + 1);
+		// 	return ;
+		// }
 		usleep(100);
 		++philo->starving_time;
 	}
@@ -61,15 +61,15 @@ static void	odd_philo_eat(t_philo *philo, int tid)
 	start_time = get_time();
 	pthread_mutex_lock(philo->left_fork);
 	philo->starving_time += (get_time() - start_time) * 10; 
-	if (philo->starving_time / 10 >= philo->param->rule->time_to_die)
-	{
-		philo->param->rule->is_dining = FALSE;
-		philo->life = DEAD;
-		printf("%d : starving : %lld\n", tid, philo->starving_time);
-		printf("[%lld] %d died\n", get_time() - philo->param->start_time, tid + 1);
-		pthread_mutex_unlock(philo->left_fork);
-		return ;
-	}
+	// if (philo->starving_time / 10 >= philo->param->rule->time_to_die)
+	// {
+	// 	philo->param->rule->is_dining = FALSE;
+	// 	philo->life = DEAD;
+	// 	printf("%d : starving : %lld\n", tid, philo->starving_time);
+	// 	printf("[%lld] %d died\n", get_time() - philo->param->start_time, tid + 1);
+	// 	pthread_mutex_unlock(philo->left_fork);
+	// 	return ;
+	// }
 	printf("[%lld] %d has taken a fork\n", get_time() - philo->param->start_time, tid + 1);
 	pthread_mutex_lock(philo->right_fork);
 	printf("[%lld] %d has taken a fork\n", get_time() - philo->param->start_time, tid + 1);
@@ -82,18 +82,18 @@ static void	even_philo_eat(t_philo *philo, int tid)
 {
 	long long	start_time;
 
-	usleep(10);
+	usleep(50);
 	start_time = get_time();
 	pthread_mutex_lock(philo->right_fork);
 	philo->starving_time += (get_time() - start_time) * 10; 
-	if (philo->starving_time / 10 >= philo->param->rule->time_to_die)
-	{
-		philo->param->rule->is_dining = FALSE;
-		philo->life = DEAD;
-		printf("[%lld] %d died\n", get_time() - philo->param->start_time, tid + 1);
-		pthread_mutex_unlock(philo->right_fork);
-		return ;
-	}
+	// if (philo->starving_time / 10 >= philo->param->rule->time_to_die)
+	// {
+	// 	philo->param->rule->is_dining = FALSE;
+	// 	philo->life = DEAD;
+	// 	printf("[%lld] %d died\n", get_time() - philo->param->start_time, tid + 1);
+	// 	pthread_mutex_unlock(philo->right_fork);
+	// 	return ;
+	// }
 	printf("[%lld] %d has taken a fork\n", get_time() - philo->param->start_time, tid + 1);
 	pthread_mutex_lock(philo->left_fork);
 	printf("[%lld] %d has taken a fork\n", get_time() - philo->param->start_time, tid + 1);

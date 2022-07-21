@@ -42,7 +42,7 @@ typedef struct s_philo
 {
 	struct s_param	*param;
 	int				tid_index;
-	int				life;
+	int				life; //
 	int				eat_count;
 	long long		starving_time;
 	pthread_mutex_t	*left_fork;
