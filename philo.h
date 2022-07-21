@@ -31,7 +31,7 @@ typedef struct s_rule
 
 typedef struct s_param
 {
-	long long		*start_time;
+	long long		start_time;
 	struct s_rule	*rule;
 	pthread_mutex_t	*forks;
 	pthread_t		*tids;
