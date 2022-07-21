@@ -44,9 +44,11 @@ static void	odd_philo_eat(t_philo *philo, int tid)
 
 	start_time = get_time();
 	pthread_mutex_lock(philo->left_fork);
+	// pthread_mutex_lock(&philo->param->dead_check);
 	printf("[%lld] %d has taken a fork\n", get_time() - philo->param->start_time, tid + 1);
 	pthread_mutex_lock(philo->right_fork);
 	printf("[%lld] %d has taken a fork\n", get_time() - philo->param->start_time, tid + 1);
+	// pthread_mutex_unlock(&philo->param->dead_check);
 	philo_eat(philo->param->rule, philo, philo->tid_index);
 	pthread_mutex_unlock(philo->left_fork);
 	pthread_mutex_unlock(philo->right_fork);

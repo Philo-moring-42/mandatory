@@ -31,7 +31,6 @@ int	check_death_of_philo(t_param param)
 	i = 0;
 	while (i < param.rule->num_of_philo)
 	{
-		// if (param.philo[i].life == DEAD || (param.philo[i].start_starving_time / 10 >= param.rule->time_to_die))
 		if ((get_time() - param.philo[i].start_starving_time > param.rule->time_to_die))
 		{
 			printf("[%lld] %d died\n", get_time() - param.start_time, i + 1);
@@ -47,8 +46,13 @@ int	monitoring_philos(t_param param)
 {
 	while (1)
 	{
+		// pthread_mutex_lock(&param.dead_check);
 		if (check_death_of_philo(param) == KILL_PROCESS)
+		{
+			pthread_mutex_unlock(&param.dead_check);
 			break;
+		}
+		// pthread_mutex_unlock(&param.dead_check);
 		if (param.rule->if_count_of_must_eat == TRUE && \
 			check_eat_count(param) == KILL_PROCESS)
 			break;

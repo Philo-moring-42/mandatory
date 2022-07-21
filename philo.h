@@ -34,6 +34,7 @@ typedef struct s_param
 	long long		start_time;
 	struct s_rule	*rule;
 	pthread_mutex_t	*forks;
+	pthread_mutex_t dead_check;
 	pthread_t		*tids;
 	t_philo			*philo;
 }	t_param;
