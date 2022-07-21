@@ -35,6 +35,7 @@ int	check_death_of_philo(t_param param)
 		if ((param.philo[i].starving_time / 10 >= param.rule->time_to_die))
 		{
 			// starving_time 체크시 printf 누가 죽었음이 안나옴
+			printf("%d : starving_time : %lld\n",i + 1, param.philo[i].starving_time);
 			printf("[%lld] %d died\n", get_time() - param.start_time, i + 1);
 			param.rule->is_dining = FALSE;
 			return (KILL_PROCESS);
