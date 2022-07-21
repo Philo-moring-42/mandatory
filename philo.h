@@ -44,7 +44,7 @@ typedef struct s_philo
 	int				tid_index;
 	int				life; //
 	int				eat_count;
-	long long		starving_time;
+	long long		start_starving_time; 
 	pthread_mutex_t	*left_fork;
 	pthread_mutex_t	*right_fork;
 }	t_philo;

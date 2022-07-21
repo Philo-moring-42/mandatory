@@ -17,7 +17,7 @@
 // 	printf("philo[%d].tid_index : %d\n", i, philo.tid_index);
 // 	printf("philo[%d].life : %d\n", i, philo.life);
 // 	printf("philo[%d].eat_count : %d\n", i, philo.eat_count);
-// 	printf("philo[%d].starving_time : %lld\n", i, philo.starving_time);
+// 	printf("philo[%d].start_starving_time : %lld\n", i, philo.start_starving_time);
 // 	printf("philo[%d].left_fork : %ld\n", i, philo.left_fork->__sig);
 // 	printf("philo[%d].right_fork : %ld\n", i, philo.right_fork->__sig);
 // 	printf("-----------------------------------------\n");
