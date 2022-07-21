@@ -24,27 +24,27 @@ static void	busy_waiting(long long time_to_spend, t_philo *philo, int tid)
 	}
 }
 
-static void	philo_eat(t_rule rule, t_philo *philo, int tid)
+static void	philo_eat(t_rule *rule, t_philo *philo, int tid)
 {
-	if (rule.is_dining == FALSE)
+	if (rule->is_dining == FALSE)
 		return ;
 	printf("[%lld] %d is eating\n", get_time() - *(philo->param->start_time), tid + 1);
-	busy_waiting(rule.time_to_eat, philo, tid);
+	busy_waiting(rule->time_to_eat, philo, tid);
 	++(philo->eat_count);
 	philo->starving_time = 0;
 }
 
-static void	philo_sleep(t_rule rule, t_philo *philo, int tid)
+static void	philo_sleep(t_rule *rule, t_philo *philo, int tid)
 {
-	if (rule.is_dining == FALSE)
+	if (rule->is_dining == FALSE)
 		return ;
 	printf("[%lld] %d is sleeping\n", get_time() - *(philo->param->start_time), tid + 1);
-	busy_waiting(rule.time_to_sleep, philo, tid);
+	busy_waiting(rule->time_to_sleep, philo, tid);
 }
 
-static void	philo_think(t_rule rule, t_philo *philo, int tid)
+static void	philo_think(t_rule *rule, t_philo *philo, int tid)
 {
-	if (rule.is_dining == FALSE)
+	if (rule->is_dining == FALSE)
 		return ;
 	printf("[%lld] %d is thinking\n", get_time() - *(philo->param->start_time), tid + 1);
 	//busy_waiting(200, philo, tid);
@@ -68,7 +68,7 @@ static void	odd_philo_eat(t_philo *philo, int tid)
 	printf("[%lld] %d has taken a fork\n", get_time() - *(philo->param->start_time), tid + 1);
 	pthread_mutex_lock(philo->right_fork);
 	printf("[%lld] %d has taken a fork\n", get_time() - *(philo->param->start_time), tid + 1);
-	philo_eat(*(philo->param->rule), philo, philo->tid_index);
+	philo_eat(philo->param->rule, philo, philo->tid_index);
 	pthread_mutex_unlock(philo->left_fork);
 	pthread_mutex_unlock(philo->right_fork);
 }
@@ -93,7 +93,7 @@ static void	even_philo_eat(t_philo *philo, int tid)
 	printf("[%lld] %d has taken a fork\n", get_time() - *(philo->param->start_time), tid + 1);
 	pthread_mutex_lock(philo->left_fork);
 	printf("[%lld] %d has taken a fork\n", get_time() - *(philo->param->start_time), tid + 1);
-	philo_eat(*(philo->param->rule), philo, philo->tid_index);
+	philo_eat(philo->param->rule, philo, philo->tid_index);
 	pthread_mutex_unlock(philo->left_fork);
 	pthread_mutex_unlock(philo->right_fork);
 }
@@ -113,8 +113,8 @@ void	*philo_act(void *data)
 			odd_philo_eat(philo, tid);
 		else
 			even_philo_eat(philo, tid);
-		philo_sleep(*(philo->param->rule), philo, philo->tid_index);
-		philo_think(*(philo->param->rule), philo, philo->tid_index);
+		philo_sleep(philo->param->rule, philo, philo->tid_index);
+		philo_think(philo->param->rule, philo, philo->tid_index);
 	}
 	return (NULL);
 }
