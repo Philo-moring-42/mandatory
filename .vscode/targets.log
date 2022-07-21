@@ -6,9 +6,8 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # PARTICULAR PURPOSE.
 
 # This program built for i386-apple-darwin11.3.0
- 
 
-# Make data base, printed on Thu Jul 21 10:17:38 2022
+# Make data base, printed on Thu Jul 21 12:25:39 2022
 
 # Variables
 
@@ -16,6 +15,8 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 <D = $(patsubst %/,%,$(dir $<))
 # automatic
 ?F = $(notdir $?)
+# environment
+ELECTRON_NO_ATTACH_CONSOLE = 1
 # environment
 VSCODE_LOG_NATIVE = false
 # automatic
@@ -25,12 +26,11 @@ VSCODE_LOG_NATIVE = false
 # automatic
 @F = $(notdir $@)
 # makefile
-CURDIR := /Users/solpang/philo
+CURDIR := /Users/surinlee/Desktop/42/3circle/mandatory
 # makefile
- 
 SHELL = /bin/sh
 # environment
-VSCODE_NLS_CONFIG = {"locale":"ko","availableLanguages":{"*":"ko"},"_languagePackId":"26f3b44ea4f1e942cca002e9545643cc.ko","_translationsConfigFile":"/Users/solpang/Library/Application Support/Code/clp/26f3b44ea4f1e942cca002e9545643cc.ko/tcf.json","_cacheRoot":"/Users/solpang/Library/Application Support/Code/clp/26f3b44ea4f1e942cca002e9545643cc.ko","_resolvedLanguagePackCoreLocation":"/Users/solpang/Library/Application Support/Code/clp/26f3b44ea4f1e942cca002e9545643cc.ko/4af164ea3a06f701fe3e89a2bcbb421d2026b68f","_corruptedFile":"/Users/solpang/Library/Application Support/Code/clp/26f3b44ea4f1e942cca002e9545643cc.ko/corrupted.info","_languagePackSupport":true}
+VSCODE_NLS_CONFIG = {"locale":"ko","availableLanguages":{"*":"ko"},"_languagePackId":"26f3b44ea4f1e942cca002e9545643cc.ko","_translationsConfigFile":"/Users/surinlee/Library/Application Support/Code/clp/26f3b44ea4f1e942cca002e9545643cc.ko/tcf.json","_cacheRoot":"/Users/surinlee/Library/Application Support/Code/clp/26f3b44ea4f1e942cca002e9545643cc.ko","_resolvedLanguagePackCoreLocation":"/Users/surinlee/Library/Application Support/Code/clp/26f3b44ea4f1e942cca002e9545643cc.ko/30d9c6cd9483b2cc586687151bcbcd635f373630","_corruptedFile":"/Users/surinlee/Library/Application Support/Code/clp/26f3b44ea4f1e942cca002e9545643cc.ko/corrupted.info","_languagePackSupport":true}
 # environment
 _ = /usr/bin/make
 # makefile (from `Makefile', line 1)
@@ -40,17 +40,13 @@ VSCODE_VERBOSE_LOGGING = true
 # environment
 __CFBundleIdentifier = com.microsoft.VSCode
 # environment
-INFOPATH = /opt/homebrew/share/info:/opt/homebrew/share/info:
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/b2/_pwd8k4x28d804q48y9p8k5h0000gn/T/vscode-ipc-23ddd809-0a7b-4aed-9ed0-b7fe0fe2828e.sock
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/87/t6g9lc990pxbhxmybry4mbbw0000gn/T/vscode-ipc-65991e1c-c464-4841-8630-be2ac0800d7d.sock
+VSCODE_CWD = /Users/surinlee/Desktop/42/3circle/mandatory
 # environment
-VSCODE_CWD = /Users/solpang/philo
-# environment
-PATH = /opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/share/dotnet:~/.dotnet/tools:/Library/Apple/usr/bin:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/opt/homebrew/bin:/opt/homebrew/sbin
+PATH = /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin
 # environment
 LSCOLORS = Gxfxcxdxbxegedabagacad
-# environment
-SPACESHIP_VERSION = 3.16.1
 # environment
 VSCODE_LOG_STACK = false
 # environment
@@ -58,33 +54,31 @@ ELECTRON_RUN_AS_NODE = 1
 # default
 .FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.TU2XSqG4fp/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.FQLo1YlHTm/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
 VSCODE_PIPE_LOGGING = true
 # environment
-PWD = /Users/solpang/philo
-# environment
-HOMEBREW_CELLAR = /opt/homebrew/Cellar
+PWD = /Users/surinlee/Desktop/42/3circle/mandatory
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = undefined
 # environment
-MANPATH = /opt/homebrew/share/man:/usr/share/man:/usr/local/share/man:/opt/homebrew/share/man:
-# environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
-HOME = /Users/solpang
+HOME = /Users/surinlee
 # default
 MAKEFILEPATH := /Applications/Xcode.app/Contents/Developer/Makefiles
 # environment
-VSCODE_CODE_CACHE_PATH = /Users/solpang/Library/Application Support/Code/CachedData/4af164ea3a06f701fe3e89a2bcbb421d2026b68f
+VSCODE_CLI = 1
 # environment
-LOGNAME = solpang
+VSCODE_CODE_CACHE_PATH = /Users/surinlee/Library/Application Support/Code/CachedData/30d9c6cd9483b2cc586687151bcbcd635f373630
+# environment
+LOGNAME = surinlee
 # environment
 APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # environment
-ZSH = /Users/solpang/.oh-my-zsh
+ZSH = /Users/surinlee/.oh-my-zsh
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # automatic
@@ -98,17 +92,17 @@ MAKE = $(MAKE_COMMAND)
 # environment
 LC_TERMINAL = iTerm2
 # environment
-SHLVL = 2
+SHLVL = 3
 # default
 MAKE_VERSION := 3.81
 # environment
-USER = jkwak
+USER = surinlee
 # makefile
 .DEFAULT_GOAL := all
 # default
 MAKECMDGOALS := all
 # environment
-TERM_SESSION_ID = w0t0p0:85A4FD07-7281-41BF-AD1E-F5B6AA99CF66
+TERM_SESSION_ID = w0t0p0:35FD846A-3BF2-4452-9441-AE42A38CFCFA
 # environment
 LESS = -R
 # automatic
@@ -120,11 +114,11 @@ TERM_PROGRAM = iTerm.app
 # default
 .VARIABLES := 
 # environment
-TMPDIR = /var/folders/87/t6g9lc990pxbhxmybry4mbbw0000gn/T/
+TMPDIR = /var/folders/b2/_pwd8k4x28d804q48y9p8k5h0000gn/T/
 # automatic
 *F = $(notdir $*)
 # environment
-VSCODE_IPC_HOOK = /Users/solpang/Library/Application Support/Code/1.68.0-main.sock
+VSCODE_IPC_HOOK = /Users/surinlee/Library/Application Support/Code/1.68.1-main.sock
 # makefile
 MAKEFLAGS = Rrqp
 # environment
@@ -134,23 +128,17 @@ MFLAGS = -Rrqp
 # environment
 TERM_PROGRAM_VERSION = 3.4.15
 # environment
-MAIL = jkwak@student.42seoul.kr
-# environment
-XPC_SERVICE_NAME = application.com.microsoft.VSCode.5733010.5733017.BA7F6F37-7914-4213-A93A-72ACB191EED9
+XPC_SERVICE_NAME = application.com.microsoft.VSCode.6388427.6388433.E9B24317-EE9F-47FB-B517-230CF585EB83
 # environment
 LC_TERMINAL_VERSION = 3.4.15
-# environment
-HOMEBREW_PREFIX = /opt/homebrew
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # automatic
 +F = $(notdir $+)
 # environment
-ITERM_SESSION_ID = w0t0p0:85A4FD07-7281-41BF-AD1E-F5B6AA99CF66
+ITERM_SESSION_ID = w0t0p0:35FD846A-3BF2-4452-9441-AE42A38CFCFA
 # environment
-HOMEBREW_REPOSITORY = /opt/homebrew
-# environment
-COLORFGBG = 15;0
+COLORFGBG = 7;0
 # environment
 __CF_USER_TEXT_ENCODING = 0x1F5:0x3:0x33
 # environment
@@ -165,12 +153,12 @@ ITERM_PROFILE = Default
 PAGER = less
 # environment
 LC_ALL = C
-# environment
-SPACESHIP_ROOT = /Users/solpang/.oh-my-zsh/custom/themes/spaceship-prompt
 # automatic
 ^F = $(notdir $^)
 # default
 SUFFIXES := 
+# default
+.INCLUDE_DIRS = /usr/local/include
 # environment
 MAKELEVEL := 0
 # environment
@@ -178,9 +166,9 @@ LANG = C
 # environment
 TERM = xterm-256color
 # environment
-VSCODE_PID = 2006
+VSCODE_PID = 23751
 # variable set hash-table stats:
-# Load=83/1024=8%, Rehash=0, Collisions=4/108=4%
+# Load=78/1024=8%, Rehash=0, Collisions=4/104=4%
 
 # Pattern-specific Variable Values
 
@@ -188,9 +176,9 @@ VSCODE_PID = 2006
 
 # Directories
 
-# . (device 16777234, inode 5976353): 17 files, no impossibilities.
+# . (device 16777232, inode 6577105): 19 files, no impossibilities.
 
-# 17 files, no impossibilities in 1 directories.
+# 19 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -204,7 +192,6 @@ all:
 #  Implicit/static pattern stem: `'
 #  File does not exist.
 #  File has been updated.
- 
 #  Needs to be updated (-q is set).
 # automatic
 # @ := all
@@ -237,7 +224,7 @@ all:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-20 20:04:21
+#  Last modified 2022-07-18 13:27:34
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -262,6 +249,6 @@ Makefile:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Thu Jul 21 10:17:38 2022
+# Finished Make data base on Thu Jul 21 12:25:39 2022
 
  

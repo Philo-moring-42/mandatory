@@ -118,27 +118,24 @@ void	*philo_act(void *data)
 	return (NULL);
 }
 
-int	philo_run(t_rule *rule)
+int	philo_run(t_rule *rule, t_param *param)
 {
 	int			i;
-	t_param		param;
 
-	if (init_param(&param, rule) == FAIL)
-		return (FAIL);
 	i = 0;
 	while (i < rule->num_of_philo)
 	{
-		param.philo[i].tid_index = i;
-		pthread_create(&param.tids[i], NULL, philo_act, &param.philo[i]);
-		usleep(100);
+		param->philo[i].tid_index = i;
+		pthread_create(&param->tids[i], NULL, philo_act, &param->philo[i]);
+		usleep(10);
 		++i;
 	}
-	if (monitoring_philos(param) == KILL_PROCESS)
+	if (monitoring_philos(*param) == KILL_PROCESS)
 	{
 		i = 0;
 		while (i < rule->num_of_philo)
 		{
-			pthread_join(param.tids[i], NULL);
+			pthread_join(param->tids[i], NULL);
 			++i;
 		}
 	}

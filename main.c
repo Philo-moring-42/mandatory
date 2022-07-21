@@ -12,13 +12,16 @@
 int	main(int argc, char **argv)
 {
 	t_rule	rule;
+	t_param	param;
 
 	if (!parsing(argc, argv, &rule))
 	{
 		printf("FAIL\n");
 		return (0);
 	}
-	if (philo_run(&rule) == FAIL)
+	if (init_param(&param, &rule) == FAIL)
+		return (FAIL);
+	if (philo_run(&rule, &param) == FAIL)
 		return (0);
 		
 	// /*             아이디어             */

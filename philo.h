@@ -66,7 +66,7 @@ int	monitoring_philos(t_param param);
 int	parsing(int argc, char **argv, t_rule *rule);
 
 /* philo_act */
-int	philo_run(t_rule *rule);
+int	philo_run(t_rule *rule, t_param *param);
 
 
 
