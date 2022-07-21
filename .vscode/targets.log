@@ -6,8 +6,9 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # PARTICULAR PURPOSE.
 
 # This program built for i386-apple-darwin11.3.0
+ 
 
-# Make data base, printed on Tue Jul 19 14:14:34 2022
+# Make data base, printed on Thu Jul 21 10:17:38 2022
 
 # Variables
 
@@ -26,6 +27,7 @@ VSCODE_LOG_NATIVE = false
 # makefile
 CURDIR := /Users/solpang/philo
 # makefile
+ 
 SHELL = /bin/sh
 # environment
 VSCODE_NLS_CONFIG = {"locale":"ko","availableLanguages":{"*":"ko"},"_languagePackId":"26f3b44ea4f1e942cca002e9545643cc.ko","_translationsConfigFile":"/Users/solpang/Library/Application Support/Code/clp/26f3b44ea4f1e942cca002e9545643cc.ko/tcf.json","_cacheRoot":"/Users/solpang/Library/Application Support/Code/clp/26f3b44ea4f1e942cca002e9545643cc.ko","_resolvedLanguagePackCoreLocation":"/Users/solpang/Library/Application Support/Code/clp/26f3b44ea4f1e942cca002e9545643cc.ko/4af164ea3a06f701fe3e89a2bcbb421d2026b68f","_corruptedFile":"/Users/solpang/Library/Application Support/Code/clp/26f3b44ea4f1e942cca002e9545643cc.ko/corrupted.info","_languagePackSupport":true}
@@ -38,13 +40,13 @@ VSCODE_VERBOSE_LOGGING = true
 # environment
 __CFBundleIdentifier = com.microsoft.VSCode
 # environment
-INFOPATH = /opt/homebrew/share/info:
+INFOPATH = /opt/homebrew/share/info:/opt/homebrew/share/info:
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/87/t6g9lc990pxbhxmybry4mbbw0000gn/T/vscode-ipc-15851669-d64b-49ee-806a-05418507ec04.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/87/t6g9lc990pxbhxmybry4mbbw0000gn/T/vscode-ipc-65991e1c-c464-4841-8630-be2ac0800d7d.sock
 # environment
 VSCODE_CWD = /Users/solpang/philo
 # environment
-PATH = /opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/share/dotnet:~/.dotnet/tools:/Library/Apple/usr/bin:/Library/Frameworks/Mono.framework/Versions/Current/Commands
+PATH = /opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/share/dotnet:~/.dotnet/tools:/Library/Apple/usr/bin:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/opt/homebrew/bin:/opt/homebrew/sbin
 # environment
 LSCOLORS = Gxfxcxdxbxegedabagacad
 # environment
@@ -56,7 +58,7 @@ ELECTRON_RUN_AS_NODE = 1
 # default
 .FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.0sHnjxgVXb/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.TU2XSqG4fp/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
@@ -68,7 +70,7 @@ HOMEBREW_CELLAR = /opt/homebrew/Cellar
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = undefined
 # environment
-MANPATH = /opt/homebrew/share/man::
+MANPATH = /opt/homebrew/share/man:/usr/share/man:/usr/local/share/man:/opt/homebrew/share/man:
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
@@ -106,7 +108,7 @@ USER = jkwak
 # default
 MAKECMDGOALS := all
 # environment
-TERM_SESSION_ID = w0t0p0:AFBEFCD8-DEFB-4BAA-9A78-2604079D9BEB
+TERM_SESSION_ID = w0t0p0:85A4FD07-7281-41BF-AD1E-F5B6AA99CF66
 # environment
 LESS = -R
 # automatic
@@ -134,7 +136,7 @@ TERM_PROGRAM_VERSION = 3.4.15
 # environment
 MAIL = jkwak@student.42seoul.kr
 # environment
-XPC_SERVICE_NAME = application.com.microsoft.VSCode.5733010.5733017.350170E2-A19C-4E3E-8291-E6D92739E31F
+XPC_SERVICE_NAME = application.com.microsoft.VSCode.5733010.5733017.BA7F6F37-7914-4213-A93A-72ACB191EED9
 # environment
 LC_TERMINAL_VERSION = 3.4.15
 # environment
@@ -144,7 +146,7 @@ HOMEBREW_PREFIX = /opt/homebrew
 # automatic
 +F = $(notdir $+)
 # environment
-ITERM_SESSION_ID = w0t0p0:AFBEFCD8-DEFB-4BAA-9A78-2604079D9BEB
+ITERM_SESSION_ID = w0t0p0:85A4FD07-7281-41BF-AD1E-F5B6AA99CF66
 # environment
 HOMEBREW_REPOSITORY = /opt/homebrew
 # environment
@@ -176,7 +178,7 @@ LANG = C
 # environment
 TERM = xterm-256color
 # environment
-VSCODE_PID = 2021
+VSCODE_PID = 2006
 # variable set hash-table stats:
 # Load=83/1024=8%, Rehash=0, Collisions=4/108=4%
 
@@ -186,9 +188,9 @@ VSCODE_PID = 2021
 
 # Directories
 
-# . (device 16777232, inode 5874888): 14 files, no impossibilities.
+# . (device 16777234, inode 5976353): 17 files, no impossibilities.
 
-# 14 files, no impossibilities in 1 directories.
+# 17 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -202,6 +204,7 @@ all:
 #  Implicit/static pattern stem: `'
 #  File does not exist.
 #  File has been updated.
+ 
 #  Needs to be updated (-q is set).
 # automatic
 # @ := all
@@ -234,7 +237,7 @@ all:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-18 09:56:14
+#  Last modified 2022-07-20 20:04:21
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -259,6 +262,6 @@ Makefile:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Tue Jul 19 14:14:34 2022
+# Finished Make data base on Thu Jul 21 10:17:38 2022
 
  
