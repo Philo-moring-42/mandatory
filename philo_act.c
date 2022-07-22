@@ -6,7 +6,7 @@
 /*   By: hjeong <hjeong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 13:40:57 by hjeong            #+#    #+#             */
-/*   Updated: 2022/07/22 18:06:30 by hjeong           ###   ########.fr       */
+/*   Updated: 2022/07/22 18:15:37 by hjeong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	philo_run(t_rule *rule)
 		pthread_create(&param.tids[i], NULL, philo_act, &param.philo[i]);
 		++i;
 	}
-	if (monitoring_philos(&param) == KILL_PROCESS)
+	if (monitoring_philos(&param) == KILL_PROCESS && rule->num_of_philo != 1)
 	{
 		i = 0;
 		while (i < rule->num_of_philo)
