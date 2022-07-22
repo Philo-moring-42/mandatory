@@ -108,7 +108,7 @@ int	philo_run(t_rule *rule)
 		i = 0;
 		while (i < rule->num_of_philo)
 		{
-			pthread_join(param.tids[i], NULL);
+			pthread_detach(param.tids[i]);
 			++i;
 		}
 	}
