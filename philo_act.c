@@ -10,19 +10,16 @@ static void	busy_waiting(long long time_to_spend, t_philo *philo, int tid)
 
 	target_time = get_time() + time_to_spend; 
 	while (get_time() < target_time)
-	{
 		usleep(100);
-		
-	}
 }
 
 static void	philo_eat(t_rule *rule, t_philo *philo, int tid)
 {
 	if (rule->is_dining == FALSE)
 		return ;
+    pthread_mutex_lock(&philo->param->print_lock);
 	print_terminal(philo->param, tid + 1, "is eating");
 	busy_waiting(rule->time_to_eat, philo, tid);
-	philo->start_starving_time = get_time();
 	++(philo->eat_count);
 }
 
@@ -30,6 +27,7 @@ static void	philo_sleep(t_rule *rule, t_philo *philo, int tid)
 {
 	if (rule->is_dining == FALSE)
 		return ;
+    pthread_mutex_lock(&philo->param->print_lock);
 	print_terminal(philo->param, tid + 1, "is sleeping");
 	busy_waiting(rule->time_to_sleep, philo, tid);
 }
@@ -38,6 +36,7 @@ static void	philo_think(t_rule *rule, t_philo *philo, int tid)
 {
 	if (rule->is_dining == FALSE)
 		return ;
+    pthread_mutex_lock(&philo->param->print_lock);
 	print_terminal(philo->param, tid + 1, "is thinking");
 	usleep(50);
 }
@@ -84,7 +83,7 @@ void	*philo_act(void *data)
 			odd_philo_eat(philo, tid);
 		else
 			even_philo_eat(philo, tid);
-		// philo->start_starving_time = get_time();
+		philo->start_starving_time = get_time();
 		philo_sleep(philo->param->rule, philo, philo->tid_index);
 		philo_think(philo->param->rule, philo, philo->tid_index);
 	}

@@ -33,9 +33,10 @@ int	check_death_of_philo(t_param param)
 	{
 		if ((get_time() - param.philo[i].start_starving_time > param.rule->time_to_die))
 		{
-			if (i == 3)
-				printf("%lld\n", get_time() - param.philo[i].start_starving_time);
+			printf("%d : %lld\n", i + 1, get_time() - param.philo[i].start_starving_time);
+		    pthread_mutex_lock(&param.print_lock);
 			print_terminal(&param, i + 1, "died");
+			// printf("[%lld] %d %s\n", get_time() - param.start_time, i + 1, "died");
 			param.rule->is_dining = FALSE;
 			return (KILL_PROCESS);
 		}
