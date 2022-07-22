@@ -44,6 +44,7 @@ int	init_param(t_param *param, t_rule *rule)
 	param->rule = rule;
 	param->forks = malloc(sizeof(pthread_mutex_t) * rule->num_of_philo);
 	pthread_mutex_init(&param->dead_check, NULL);
+	pthread_mutex_init(&param->print_lock, NULL);
 	if (!param->forks)
 		return (FAIL);
 	i = 0;

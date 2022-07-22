@@ -34,7 +34,8 @@ typedef struct s_param
 	long long		start_time;
 	struct s_rule	*rule;
 	pthread_mutex_t	*forks;
-	pthread_mutex_t dead_check;
+	pthread_mutex_t dead_check; // ??
+	pthread_mutex_t print_lock;
 	pthread_t		*tids;
 	t_philo			*philo;
 }	t_param;
@@ -69,11 +70,7 @@ int	parsing(int argc, char **argv, t_rule *rule);
 /* philo_act */
 int	philo_run(t_rule *rule);
 
-
-
-
-// test
-void	test_print(t_rule rule);
-void	test_philo(t_philo philo, int i);
+/* print.c */
+void    print_terminal(t_param *param, int tid, char *str);
 
 #endif

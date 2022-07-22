@@ -10,15 +10,19 @@ static void	busy_waiting(long long time_to_spend, t_philo *philo, int tid)
 
 	target_time = get_time() + time_to_spend; 
 	while (get_time() < target_time)
+	{
 		usleep(100);
+		
+	}
 }
 
 static void	philo_eat(t_rule *rule, t_philo *philo, int tid)
 {
 	if (rule->is_dining == FALSE)
 		return ;
-	printf("[%lld] %d is eating\n", get_time() - philo->param->start_time, tid + 1);
+	print_terminal(philo->param, tid + 1, "is eating");
 	busy_waiting(rule->time_to_eat, philo, tid);
+	philo->start_starving_time = get_time();
 	++(philo->eat_count);
 }
 
@@ -26,7 +30,7 @@ static void	philo_sleep(t_rule *rule, t_philo *philo, int tid)
 {
 	if (rule->is_dining == FALSE)
 		return ;
-	printf("[%lld] %d is sleeping\n", get_time() - philo->param->start_time, tid + 1);
+	print_terminal(philo->param, tid + 1, "is sleeping");
 	busy_waiting(rule->time_to_sleep, philo, tid);
 }
 
@@ -34,7 +38,7 @@ static void	philo_think(t_rule *rule, t_philo *philo, int tid)
 {
 	if (rule->is_dining == FALSE)
 		return ;
-	printf("[%lld] %d is thinking\n", get_time() - philo->param->start_time, tid + 1);
+	print_terminal(philo->param, tid + 1, "is thinking");
 	usleep(50);
 }
 
@@ -44,11 +48,9 @@ static void	odd_philo_eat(t_philo *philo, int tid)
 
 	start_time = get_time();
 	pthread_mutex_lock(philo->left_fork);
-	// pthread_mutex_lock(&philo->param->dead_check);
-	printf("[%lld] %d has taken a fork\n", get_time() - philo->param->start_time, tid + 1);
+	print_terminal(philo->param, tid + 1, "has taken a fork");
 	pthread_mutex_lock(philo->right_fork);
-	printf("[%lld] %d has taken a fork\n", get_time() - philo->param->start_time, tid + 1);
-	// pthread_mutex_unlock(&philo->param->dead_check);
+	print_terminal(philo->param, tid + 1, "has taken a fork");
 	philo_eat(philo->param->rule, philo, philo->tid_index);
 	pthread_mutex_unlock(philo->left_fork);
 	pthread_mutex_unlock(philo->right_fork);
@@ -61,9 +63,9 @@ static void	even_philo_eat(t_philo *philo, int tid)
 	usleep(50);
 	start_time = get_time();
 	pthread_mutex_lock(philo->right_fork);
-	printf("[%lld] %d has taken a fork\n", get_time() - philo->param->start_time, tid + 1);
+	print_terminal(philo->param, tid + 1, "has taken a fork");
 	pthread_mutex_lock(philo->left_fork);
-	printf("[%lld] %d has taken a fork\n", get_time() - philo->param->start_time, tid + 1);
+	print_terminal(philo->param, tid + 1, "has taken a fork");
 	philo_eat(philo->param->rule, philo, philo->tid_index);
 	pthread_mutex_unlock(philo->left_fork);
 	pthread_mutex_unlock(philo->right_fork);
@@ -82,7 +84,7 @@ void	*philo_act(void *data)
 			odd_philo_eat(philo, tid);
 		else
 			even_philo_eat(philo, tid);
-		philo->start_starving_time = get_time();
+		// philo->start_starving_time = get_time();
 		philo_sleep(philo->param->rule, philo, philo->tid_index);
 		philo_think(philo->param->rule, philo, philo->tid_index);
 	}
