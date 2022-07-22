@@ -17,7 +17,6 @@ static void	philo_eat(t_rule *rule, t_philo *philo, int tid)
 {
 	if (rule->is_dining == FALSE)
 		return ;
-    pthread_mutex_lock(&philo->param->print_lock);
 	print_terminal(philo->param, tid + 1, "is eating");
 	busy_waiting(rule->time_to_eat, philo, tid);
 	++(philo->eat_count);
@@ -27,7 +26,6 @@ static void	philo_sleep(t_rule *rule, t_philo *philo, int tid)
 {
 	if (rule->is_dining == FALSE)
 		return ;
-    pthread_mutex_lock(&philo->param->print_lock);
 	print_terminal(philo->param, tid + 1, "is sleeping");
 	busy_waiting(rule->time_to_sleep, philo, tid);
 }
@@ -36,7 +34,6 @@ static void	philo_think(t_rule *rule, t_philo *philo, int tid)
 {
 	if (rule->is_dining == FALSE)
 		return ;
-    pthread_mutex_lock(&philo->param->print_lock);
 	print_terminal(philo->param, tid + 1, "is thinking");
 	usleep(50);
 }
@@ -106,7 +103,7 @@ int	philo_run(t_rule *rule)
 		pthread_create(&param.tids[i], NULL, philo_act, &param.philo[i]);
 		++i;
 	}
-	if (monitoring_philos(param) == KILL_PROCESS)
+	if (monitoring_philos(&param) == KILL_PROCESS)
 	{
 		i = 0;
 		while (i < rule->num_of_philo)

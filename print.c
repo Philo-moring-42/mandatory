@@ -19,7 +19,7 @@ static int	ft_strncmp(const char *s1, const char *s2, size_t n)
 
 void    print_terminal(t_param *param, int tid, char *str)
 {
-    // pthread_mutex_lock(&param->print_lock);
+    pthread_mutex_lock(&param->print_lock);
     printf("[%lld] %d %s\n", get_time() - param->start_time, tid, str);
     if (!ft_strncmp(str, "died", 5))
         return ;

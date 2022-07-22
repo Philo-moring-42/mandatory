@@ -62,7 +62,7 @@ long long	get_time(void);
 int	init_param(t_param *param, t_rule *rule);
 
 /* monitoring.c */
-int	monitoring_philos(t_param param);
+int	monitoring_philos(t_param *param);
 
 /* parsing.c */
 int	parsing(int argc, char **argv, t_rule *rule);
