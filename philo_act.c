@@ -6,7 +6,7 @@
 /*   By: hjeong <hjeong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 13:40:57 by hjeong            #+#    #+#             */
-/*   Updated: 2022/07/25 09:53:42 by hjeong           ###   ########.fr       */
+/*   Updated: 2022/07/25 11:13:45 by hjeong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,11 @@ static void	*philo_act(void *data)
 
 	philo = (t_philo *)data;
 	tid = philo->tid_index;
-	if (tid % 2 == 1)
-	{
-		philo->start_starving_time = get_time(philo->param);
-		usleep(philo->param->rule->time_to_eat * 800);
-	}
+	while (philo->param->num_of_threads < philo->param->rule->num_of_philo)
+		usleep(10);
+	philo->start_starving_time = get_time(philo->param);
+	// if (tid % 2 == 1)
+	// 	usleep(philo->param->rule->time_to_eat * 800);
 	while (philo->param->rule->is_dining == TRUE)
 	{
 		dining_philo_eat(philo, tid);
@@ -54,11 +54,13 @@ int	philo_run(t_rule *rule)
 	if (init_param(&param, rule) == FAIL)
 		return (FAIL);
 	i = 0;
-	param.start_time = get_time(&param);
 	while (i < rule->num_of_philo)
 	{
 		param.philo[i].tid_index = i;
 		pthread_create(&param.tids[i], NULL, philo_act, &param.philo[i]);
+		pthread_mutex_lock(&param.thread_lock);
+		++param.num_of_threads;
+		pthread_mutex_unlock(&param.thread_lock);
 		++i;
 	}
 	if (monitoring_philos(&param) == KILL_PROCESS && rule->num_of_philo != 1)

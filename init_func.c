@@ -6,7 +6,7 @@
 /*   By: hjeong <hjeong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 13:32:49 by hjeong            #+#    #+#             */
-/*   Updated: 2022/07/25 09:53:48 by hjeong           ###   ########.fr       */
+/*   Updated: 2022/07/25 11:16:30 by hjeong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,11 @@ int	init_param(t_param *param, t_rule *rule)
 
 	param->rule = rule;
 	param->forks = malloc(sizeof(pthread_mutex_t) * rule->num_of_philo);
+	param->num_of_threads = 0;
 	pthread_mutex_init(&param->print_lock, NULL);
 	pthread_mutex_init(&param->is_dining_lock, NULL);
 	pthread_mutex_init(&param->get_time_lock, NULL);
+	pthread_mutex_init(&param->thread_lock, NULL);
 	if (!param->forks)
 		return (FAIL);
 	i = 0;

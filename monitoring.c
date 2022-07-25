@@ -6,7 +6,7 @@
 /*   By: hjeong <hjeong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 13:33:15 by hjeong            #+#    #+#             */
-/*   Updated: 2022/07/25 09:50:36 by hjeong           ###   ########.fr       */
+/*   Updated: 2022/07/25 11:16:39 by hjeong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,9 @@ static int	check_death_of_philo(t_param *param)
 
 int	monitoring_philos(t_param *param)
 {
+	while (param->num_of_threads < param->rule->num_of_philo)
+		usleep(10);
+	param->start_time = get_time(param);
 	while (1)
 	{
 		if (check_death_of_philo(param) == KILL_PROCESS)

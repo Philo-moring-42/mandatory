@@ -6,7 +6,7 @@
 /*   By: hjeong <hjeong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 13:35:04 by hjeong            #+#    #+#             */
-/*   Updated: 2022/07/22 17:05:44 by hjeong           ###   ########.fr       */
+/*   Updated: 2022/07/25 10:46:42 by hjeong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,10 @@ typedef struct s_param
 	pthread_mutex_t	print_lock;
 	pthread_mutex_t	is_dining_lock;
 	pthread_mutex_t	get_time_lock;
+	pthread_mutex_t	thread_lock;
 	pthread_t		*tids;
 	t_philo			*philo;
+	int				num_of_threads;
 }	t_param;
 
 typedef struct s_philo
