@@ -6,7 +6,7 @@
 /*   By: hjeong <hjeong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 13:33:15 by hjeong            #+#    #+#             */
-/*   Updated: 2022/07/22 17:14:04 by hjeong           ###   ########.fr       */
+/*   Updated: 2022/07/25 09:50:36 by hjeong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static int	check_death_of_philo(t_param *param)
 			pthread_mutex_unlock(&param->is_dining_lock);
 			pthread_mutex_lock(&param->print_lock);
 			printf("[%lld] %d %s\n", get_time(param) \
-				- param->philo[i].start_starving_time, i + 1, "died");
+				- param->start_time, i + 1, "died");
 			return (KILL_PROCESS);
 		}
 		++i;

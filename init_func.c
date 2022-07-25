@@ -6,7 +6,7 @@
 /*   By: hjeong <hjeong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 13:32:49 by hjeong            #+#    #+#             */
-/*   Updated: 2022/07/22 17:25:49 by hjeong           ###   ########.fr       */
+/*   Updated: 2022/07/25 09:53:48 by hjeong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ static int	init_philo(t_param *param)
 		param->philo[i].param = param;
 		param->philo[i].eat_count = 0;
 		param->philo[i].start_starving_time = get_time(param);
-		param->start_time = get_time(param);
 		param->philo[i].left_fork = &param->forks[i];
 		param->philo[i].right_fork = &param->forks[(i + 1) \
 			% param->rule->num_of_philo];
