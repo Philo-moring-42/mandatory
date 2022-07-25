@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo_act2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hjeong <hjeong@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: hogkim <hogkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 13:53:10 by hjeong            #+#    #+#             */
-/*   Updated: 2022/07/22 17:05:08 by hjeong           ###   ########.fr       */
+/*   Updated: 2022/07/25 11:45:33 by hogkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	philo_eat(t_rule *rule, t_philo *philo, int tid)
 	if (rule->is_dining == FALSE)
 		return ;
 	print_terminal(philo->param, tid + 1, "is eating");
+	philo->start_starving_time = get_time(philo->param);
 	spending_time(philo->param, rule->time_to_eat);
 	++(philo->eat_count);
 }

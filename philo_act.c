@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo_act.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hjeong <hjeong@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: hogkim <hogkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 13:40:57 by hjeong            #+#    #+#             */
-/*   Updated: 2022/07/25 09:53:42 by hjeong           ###   ########.fr       */
+/*   Updated: 2022/07/25 11:45:17 by hogkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ static void	*philo_act(void *data)
 	while (philo->param->rule->is_dining == TRUE)
 	{
 		dining_philo_eat(philo, tid);
-		philo->start_starving_time = get_time(philo->param);
 		philo_sleep(philo->param->rule, philo, philo->tid_index);
 		philo_think(philo->param->rule, philo, philo->tid_index);
 	}
