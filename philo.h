@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hjeong <hjeong@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: hogkim <hogkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 13:35:04 by hjeong            #+#    #+#             */
-/*   Updated: 2022/07/22 17:05:44 by hjeong           ###   ########.fr       */
+/*   Updated: 2022/07/28 16:17:19 by hogkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int			monitoring_philos(t_param *param);
 int			parsing(int argc, char **argv, t_rule *rule);
 
 /* philo_act.c */
-int			philo_run(t_rule *rule);
+void		philo_run(t_rule *rule);
 
 /* philo_act2.c */
 void		spending_time(t_param *param, long long time_to_spend);

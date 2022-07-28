@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hjeong <hjeong@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: hogkim <hogkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 13:32:53 by hjeong            #+#    #+#             */
-/*   Updated: 2022/07/22 15:34:05 by hjeong           ###   ########.fr       */
+/*   Updated: 2022/07/28 16:28:53 by hogkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,6 @@ int	main(int argc, char **argv)
 		printf("FAIL\n");
 		return (0);
 	}
-	if (philo_run(&rule) == FAIL)
-		return (0);
+	philo_run(&rule);
+	return (0);
 }

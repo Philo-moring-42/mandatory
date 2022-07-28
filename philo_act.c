@@ -6,12 +6,33 @@
 /*   By: hogkim <hogkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 13:40:57 by hjeong            #+#    #+#             */
-/*   Updated: 2022/07/25 11:45:17 by hogkim           ###   ########.fr       */
+/*   Updated: 2022/07/28 16:32:30 by hogkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 #include <unistd.h>
+#include <stdlib.h>
+
+static void	free_all(t_param *param)
+{
+	free(param->forks);
+	free(param->philo);
+	free(param->tids);
+}
+
+static void	detach_pthreads(int i, t_param *param)
+{
+	int	index;
+
+	index = 0;
+	while (index < i)
+	{
+		pthread_detach(param->tids[index]);
+		++index;
+	}
+	free_all(param);
+}
 
 static void	dining_philo_eat(t_philo *philo, int tid)
 {
@@ -45,29 +66,30 @@ static void	*philo_act(void *data)
 	return (NULL);
 }
 
-int	philo_run(t_rule *rule)
+void	philo_run(t_rule *rule)
 {
 	int			i;
 	t_param		param;
 
 	if (init_param(&param, rule) == FAIL)
-		return (FAIL);
+		return ;
 	i = 0;
 	param.start_time = get_time(&param);
 	while (i < rule->num_of_philo)
 	{
 		param.philo[i].tid_index = i;
-		pthread_create(&param.tids[i], NULL, philo_act, &param.philo[i]);
+		if (pthread_create(&param.tids[i], NULL, philo_act, &param.philo[i]))
+		{
+			detach_pthreads(i, &param);
+			return ;
+		}
 		++i;
 	}
 	if (monitoring_philos(&param) == KILL_PROCESS && rule->num_of_philo != 1)
 	{
 		i = 0;
 		while (i < rule->num_of_philo)
-		{
-			pthread_join(param.tids[i], NULL);
-			++i;
-		}
+			pthread_join(param.tids[i++], NULL);
 	}
-	return (SUCCESS);
+	free_all(&param);
 }
