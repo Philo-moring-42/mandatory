@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   monitoring.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hjeong <hjeong@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: hogkim <hogkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 13:33:15 by hjeong            #+#    #+#             */
-/*   Updated: 2022/07/25 09:50:36 by hjeong           ###   ########.fr       */
+/*   Updated: 2022/08/23 22:00:55 by hogkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,10 @@ static int	check_eat_count(t_param *param)
 	i = 0;
 	while (i < param->rule->num_of_philo)
 	{
+		pthread_mutex_lock(&param->eat_count_lock);
 		if (param->philo[i].eat_count >= param->rule->count_of_must_eat)
 			++num_of_hogs;
+		pthread_mutex_unlock(&param->eat_count_lock);
 		++i;
 	}
 	if (num_of_hogs == param->rule->num_of_philo)
@@ -46,9 +48,11 @@ static int	check_death_of_philo(t_param *param)
 	i = 0;
 	while (i < param->rule->num_of_philo)
 	{
+		pthread_mutex_lock(&param->starving_time_lock);
 		if ((get_time(param) - param->philo[i].start_starving_time \
 			> param->rule->time_to_die))
 		{
+			pthread_mutex_unlock(&param->starving_time_lock);
 			pthread_mutex_lock(&param->is_dining_lock);
 			param->rule->is_dining = FALSE;
 			pthread_mutex_unlock(&param->is_dining_lock);
@@ -57,6 +61,7 @@ static int	check_death_of_philo(t_param *param)
 				- param->start_time, i + 1, "died");
 			return (KILL_PROCESS);
 		}
+		pthread_mutex_unlock(&param->starving_time_lock);
 		++i;
 	}
 	return (KEEP_PROCESS);

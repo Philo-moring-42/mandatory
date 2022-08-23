@@ -6,12 +6,12 @@
 #    By: hogkim <hogkim@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/22 13:33:12 by hjeong            #+#    #+#              #
-#    Updated: 2022/08/22 20:46:38 by hogkim           ###   ########.fr        #
+#    Updated: 2022/08/23 21:16:54 by hogkim           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
-CFLAGS = -Werror -Wall -Wextra -pthread -g3 -fsanitize=thread 
+CFLAGS = -Werror -Wall -Wextra -g3 -fsanitize=thread
 NAME = philo
 
 SRCS = main.c \

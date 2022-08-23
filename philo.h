@@ -6,7 +6,7 @@
 /*   By: hogkim <hogkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 13:35:04 by hjeong            #+#    #+#             */
-/*   Updated: 2022/07/28 16:17:19 by hogkim           ###   ########.fr       */
+/*   Updated: 2022/08/23 21:46:14 by hogkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ typedef struct s_param
 	pthread_mutex_t	print_lock;
 	pthread_mutex_t	is_dining_lock;
 	pthread_mutex_t	get_time_lock;
+	pthread_mutex_t	starving_time_lock;
+	pthread_mutex_t	eat_count_lock;
 	pthread_t		*tids;
 	t_philo			*philo;
 }	t_param;

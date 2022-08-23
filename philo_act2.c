@@ -6,7 +6,7 @@
 /*   By: hogkim <hogkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 13:53:10 by hjeong            #+#    #+#             */
-/*   Updated: 2022/08/23 20:14:23 by hogkim           ###   ########.fr       */
+/*   Updated: 2022/08/23 21:46:11 by hogkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,13 @@ void	philo_eat(t_rule *rule, t_philo *philo, int tid)
 	}
 	pthread_mutex_unlock(&philo->param->is_dining_lock);
 	print_terminal(philo->param, tid + 1, "is eating");
+	pthread_mutex_lock(&philo->param->starving_time_lock);
 	philo->start_starving_time = get_time(philo->param);
+	pthread_mutex_unlock(&philo->param->starving_time_lock);
 	spending_time(philo->param, rule->time_to_eat);
+	pthread_mutex_lock(&philo->param->eat_count_lock);
 	++(philo->eat_count);
+	pthread_mutex_unlock(&philo->param->eat_count_lock);
 }
 
 void	philo_sleep(t_rule *rule, t_philo *philo, int tid)

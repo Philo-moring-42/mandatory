@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hjeong <hjeong@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: hogkim <hogkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 13:35:07 by hjeong            #+#    #+#             */
-/*   Updated: 2022/07/22 17:16:04 by hjeong           ###   ########.fr       */
+/*   Updated: 2022/08/23 21:20:41 by hogkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,15 @@ static int	ft_strncmp(const char *s1, const char *s2, size_t n)
 
 void	print_terminal(t_param *param, int tid, char *str)
 {
+	pthread_mutex_lock(&param->is_dining_lock);
 	if (param->rule->is_dining == TRUE)
 	{
+		pthread_mutex_unlock(&param->is_dining_lock);
 		pthread_mutex_lock(&param->print_lock);
 		printf("[%lld] %d %s\n", get_time(param) - param->start_time, tid, str);
 		if (!ft_strncmp(str, "died", 5))
 			return ;
 		pthread_mutex_unlock(&param->print_lock);
 	}
+	pthread_mutex_unlock(&param->is_dining_lock);
 }
