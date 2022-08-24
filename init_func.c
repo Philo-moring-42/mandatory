@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hogkim <hogkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/22 13:32:49 by hjeong            #+#    #+#             */
-/*   Updated: 2022/08/23 20:49:59 by hogkim           ###   ########.fr       */
+/*   Created: 2022/08/24 17:18:59 by hogkim            #+#    #+#             */
+/*   Updated: 2022/08/24 17:19:00 by hogkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,10 @@ static void	destroy_mutex(int i, t_param *param, int rule_num)
 	if (rule_num >= 3)
 		pthread_mutex_destroy(&param->get_time_lock);
 	if (rule_num >= 4)
-	{
 		pthread_mutex_destroy(&param->starving_time_lock);
+	if (rule_num >= 5)
+	{
+		pthread_mutex_destroy(&param->eat_count_lock);
 		start = 0;
 		while (start < i)
 		{
@@ -44,7 +46,7 @@ static int	init_mutex_forks(t_param *param)
 	{
 		if (pthread_mutex_init(&param->forks[i], NULL))
 		{
-			destroy_mutex(i, param, 4);
+			destroy_mutex(i, param, 5);
 			return (FAIL);
 		}
 		++i;
@@ -92,6 +94,11 @@ static int	init_mutex(t_param *param)
 		destroy_mutex(0, param, 3);
 		return (FAIL);
 	}
+	if (pthread_mutex_init(&param->eat_count_lock, NULL))
+	{
+		destroy_mutex(0, param, 4);
+		return (FAIL);
+	}
 	if (init_mutex_forks(param) == FAIL)
 		return (FAIL);
 	return (SUCCESS);
@@ -117,7 +124,7 @@ int	init_param(t_param *param, t_rule *rule)
 	}
 	if (init_philo(param) == FAIL)
 	{
-		destroy_mutex(param->rule->num_of_philo, param, 4);
+		destroy_mutex(param->rule->num_of_philo, param, 5);
 		free(param->forks);
 		free(param->tids);
 		return (FAIL);

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hogkim <hogkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/22 13:33:15 by hjeong            #+#    #+#             */
-/*   Updated: 2022/08/24 16:49:59 by hogkim           ###   ########.fr       */
+/*   Created: 2022/08/24 17:18:41 by hogkim            #+#    #+#             */
+/*   Updated: 2022/08/24 17:20:04 by hogkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,11 @@ static int	check_eat_count(t_param *param)
 	while (i < param->rule->num_of_philo)
 	{
 		pthread_mutex_lock(&param->eat_count_lock);
-		if (param->philo[i].eat_count >= param->rule->count_of_must_eat)
+		if (param->philo[i++].eat_count >= param->rule->count_of_must_eat)
+		{
 			++num_of_hogs;
+		}
 		pthread_mutex_unlock(&param->eat_count_lock);
-		++i;
 	}
 	if (num_of_hogs == param->rule->num_of_philo)
 	{
