@@ -6,7 +6,7 @@
 /*   By: hogkim <hogkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 13:35:07 by hjeong            #+#    #+#             */
-/*   Updated: 2022/08/23 21:20:41 by hogkim           ###   ########.fr       */
+/*   Updated: 2022/08/24 16:50:07 by hogkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	print_terminal(t_param *param, int tid, char *str)
 	pthread_mutex_lock(&param->is_dining_lock);
 	if (param->rule->is_dining == TRUE)
 	{
-		pthread_mutex_unlock(&param->is_dining_lock);
+		//pthread_mutex_unlock(&param->is_dining_lock);
 		pthread_mutex_lock(&param->print_lock);
 		printf("[%lld] %d %s\n", get_time(param) - param->start_time, tid, str);
 		if (!ft_strncmp(str, "died", 5))
